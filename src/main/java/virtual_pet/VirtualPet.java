@@ -55,6 +55,28 @@ public class VirtualPet {
             System.out.println("My thirst level is "  + getBoredomLevel());
         }
 
-  }
+  } public void petInteraction(){
+     // Interactions for this class will include:
+     // - feed
+     // - give water
+     // - play
+     // - check time? (for .tick() method)
+        //- stop
+        // Should have set variables and check for them, the same as the gettingStarted() method (might rename it to menu or something)
+     // thinking about doing ths as a while loop so we it can run until the user types in stop
+
+        Scanner interaction =  new Scanner(System.in);
+        String interactionReply ;
+
+        String feed = "feed";
+        String giveWater = " give water";
+        String playWith =" play";
+        String checkTime = "check time ";
+        boolean stop = false ;
+
+        System.out.println("What would you like to do next?");
+
+    }
+
 
 }
