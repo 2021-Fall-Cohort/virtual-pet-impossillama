@@ -1,4 +1,6 @@
 package virtual_pet;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -37,6 +39,20 @@ public class VirtualPet {
         return boredomLevel;
     }
 
+    public void setHungerLevel(int newHungerLevel) {
+        this.hungerLevel = newHungerLevel;
+    }
+
+    public void setThirstLevel(int newThirstLevel) {
+        this.thirstLevel = newThirstLevel;
+    }
+
+    public  void setBoredomLevel(int newBoredomLevel) {
+        this.boredomLevel = newBoredomLevel;
+    }
+
+
+
   public void gettingStarted() {
         Scanner input =  new Scanner(System.in);
         String inputNum;
@@ -66,16 +82,34 @@ public class VirtualPet {
      // thinking about doing ths as a while loop so we it can run until the user types in stop
 
         Scanner interaction =  new Scanner(System.in);
-        String interactionReply ;
+        String interactionReply;
 
-        String feed = "feed";
-        String giveWater = " give water";
-        String playWith =" play";
-        String checkTime = "check time ";
+
         boolean stop = false ;
 
-        System.out.println("What would you like to do next?");
 
+
+           do {
+               System.out.println("What would you like to do next?");
+               System.out.println("You can check my stats, feed me, give me water, play with me, or make sure I'm not about to spit by");
+               interactionReply = interaction.nextLine();
+
+               if (interactionReply.equals("feed") || interactionReply.equals("feed pet")) {
+                   setHungerLevel(getHungerLevel() + 10);
+                   System.out.println("Thanks! I was hungry!");
+                   } else if (interactionReply.equals("water") || interactionReply.equals("give water")) {
+                   setThirstLevel(getThirstLevel() + 10);
+                   System.out.println("Thanks! I was thirsty");
+                } else if (interactionReply.equals("play") || interactionReply.equals("let's play")) {
+                   setBoredomLevel(getBoredomLevel() + 10);
+                   System.out.println("That was Fun!" );
+               } else if (interactionReply.equals("check stats") || interactionReply.equals("stats")) {
+                   System.out.println("My stats are: ");
+                   System.out.println("Hunger Level: " + getHungerLevel());
+                   System.out.println("Thirst Level: " + getThirstLevel());
+                   System.out.println("Boredom Level: " + getBoredomLevel());
+               }
+           } while (!stop);
     }
 
 

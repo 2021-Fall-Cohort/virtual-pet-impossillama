@@ -8,6 +8,7 @@ public class VirtualPetApplication {
         System.out.println("Welcome to the Virtual Pet Farm! I'm " + llama.getName() + " !");
         System.out.println("You can feed me, give me water, and check my boredom level! But beware! If I get bored, I spit! ");
         llama.gettingStarted();
+        llama.petInteraction();
     }
 
 }
