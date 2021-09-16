@@ -95,8 +95,12 @@ public class VirtualPet {
                interactionReply = interaction.nextLine();
 
                if (interactionReply.equals("feed") || interactionReply.equals("feed pet")) {
+                   if (getHungerLevel() >= 100) {
+                       System.out.println("No thank you I'm not hungry");
+                   } else {
                    setHungerLevel(getHungerLevel() + 10);
                    System.out.println("Thanks! I was hungry!");
+                   }
                    } else if (interactionReply.equals("water") || interactionReply.equals("give water")) {
                    setThirstLevel(getThirstLevel() + 10);
                    System.out.println("Thanks! I was thirsty");
@@ -110,6 +114,10 @@ public class VirtualPet {
                    System.out.println("Boredom Level: " + getBoredomLevel());
                }
            } while (!stop);
+    }
+
+    public void boredomMeter() {
+
     }
 
 
