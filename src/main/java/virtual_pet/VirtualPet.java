@@ -40,16 +40,18 @@ public class VirtualPet {
         return boredomLevel;
     }
 
-    public void feed(int newHungerLevel) {
-        this.hungerLevel = newHungerLevel;
+    public void feed(int feed) {
+
+        this.hungerLevel = feed;
     }
 
-    public void water(int newThirstLevel) {
-        this.thirstLevel = newThirstLevel;
+    public void water(int water) {
+
+        this.thirstLevel = water;
     }
 
-    public  void play(int newBoredomLevel) {
-        this.boredomLevel = newBoredomLevel;
+    public  void play(int play) {
+        this.boredomLevel = play;
     }
 
 

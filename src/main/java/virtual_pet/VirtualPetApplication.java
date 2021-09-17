@@ -17,11 +17,13 @@ public class VirtualPetApplication {
 
     public void gettingStarted() {
 
+        ArrayList<String> llamaStats = new ArrayList<String>();
+        llamaStats.add("Hunger Level: " + llama.getHungerLevel());
+        llamaStats.add("Thirst Level: " + llama.getThirstLevel());
+        llamaStats.add("Boredom Level: "+ llama.getBoredomLevel());
+
         System.out.println("You can feed me, give me water, and check my boredom level! But beware! If I get bored, I spit! ");
-        System.out.println("My stats are currently:");
-        System.out.println("Hunger Level: " + llama.getHungerLevel());
-        System.out.println("Thirst Level: " + llama.getThirstLevel());
-        System.out.println("Boredom Level: " + llama.getBoredomLevel());
+        System.out.println("My stats are currently:" + llamaStats);
         petInteraction();
     }
 
@@ -30,10 +32,7 @@ public class VirtualPetApplication {
         String interactionReply;
         boolean stop = false ;
 
-        ArrayList<String> llamaStats = new ArrayList<String>();
-        llamaStats.add("Hunger Level: " + llama.getHungerLevel());
-        llamaStats.add("Thirst Level: " + llama.getThirstLevel());
-        llamaStats.add("Boredom Level: "+ llama.getBoredomLevel());
+
 
         do {
             System.out.println("You can check my stats, feed me, give me water, and we can play!" +
@@ -41,8 +40,11 @@ public class VirtualPetApplication {
             interactionReply = interaction.nextLine();
 
             if (interactionReply.equalsIgnoreCase("feed") ||interactionReply.equalsIgnoreCase("give food") ){
-                llama.feed(llama.getHungerLevel() + 10);
+                if (llama.getHungerLevel() >= 100) {
+                    System.out.println("If I eat one more thing, I'll get sick!");
+                }
                 System.out.print("Thanks I was hungry!");
+                llama.feed(llama.getHungerLevel() + 10);
             } else if(interactionReply.equalsIgnoreCase("water") || interactionReply.equalsIgnoreCase("give water")) {
                 llama.water(llama.getThirstLevel() - 10);
                 System.out.println("Thanks! I was getting really thirsty!");
@@ -51,7 +53,11 @@ public class VirtualPetApplication {
                 System.out.print("Thanks! that was fun!");
 
             } else if(interactionReply.equalsIgnoreCase("stats") || interactionReply.equalsIgnoreCase("get stats")) {
-                System.out.println("My stats are currently: " + llamaStats);
+                System.out.println("My stats are currently: " );
+                System.out.println("My stats are: ");
+                System.out.println("Hunger Level: " + llama.getHungerLevel());
+                System.out.println("Thirst Level: " + llama.getThirstLevel());
+                System.out.println("Boredom Level: " +llama.getBoredomLevel());
             } else {
                 System.out.println(" ");
             }
