@@ -95,7 +95,8 @@ public class VirtualPetApplication {
         } while (!stop);
     }
 
-    public void boredomMeter() {
+    public void tick() {
+
 
     }
 
