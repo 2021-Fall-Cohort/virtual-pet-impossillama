@@ -40,19 +40,29 @@ public class VirtualPet {
         return boredomLevel;
     }
 
-    public void feed(int feed) {
+    public void feed() {
 
-        this.hungerLevel = feed;
+        this.hungerLevel = Math.max(0,hungerLevel-15);
+        tick();
     }
 
-    public void water(int water) {
+    public void water() {
 
-        this.thirstLevel = water;
+        this.thirstLevel = Math.max(0, thirstLevel-15);
+        tick();
     }
 
-    public  void play(int play) {
-        this.boredomLevel = play;
+    public  void play() {
+        this.boredomLevel = Math.max(0, boredomLevel-10);
+        tick();
     }
 
+    public void tick() {
+        this.hungerLevel = Math.min(100,hungerLevel+5);
+        this.thirstLevel = Math.min(100, thirstLevel+5);
+        this.boredomLevel = Math.min(100, boredomLevel-5);
+
+
+    }
 
 }

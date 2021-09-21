@@ -3,6 +3,7 @@ package virtual_pet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class VirtualPetApplication {
 
     VirtualPet llama;
@@ -31,6 +32,7 @@ public class VirtualPetApplication {
         Scanner interaction =  new Scanner(System.in);
         String interactionReply;
         boolean stop = false ;
+        boolean alive = true;
 
 
 
@@ -44,12 +46,12 @@ public class VirtualPetApplication {
                     System.out.println("If I eat one more thing, I'll get sick!");
                 }
                 System.out.print("Thanks I was hungry!");
-                llama.feed(llama.getHungerLevel() + 10);
+                llama.feed();
             } else if(interactionReply.equalsIgnoreCase("water") || interactionReply.equalsIgnoreCase("give water")) {
-                llama.water(llama.getThirstLevel() - 10);
+                llama.water();
                 System.out.println("Thanks! I was getting really thirsty!");
             } else if( interactionReply.equalsIgnoreCase("play")|| interactionReply.equalsIgnoreCase("let's play")) {
-                llama.play(llama.getBoredomLevel() - 10);
+                llama.play();
                 System.out.print("Thanks! that was fun!");
 
             } else if(interactionReply.equalsIgnoreCase("stats") || interactionReply.equalsIgnoreCase("get stats")) {
@@ -61,13 +63,9 @@ public class VirtualPetApplication {
             } else {
                 System.out.println(" ");
             }
-        } while (!stop);
+        } while (!stop || !alive);
     }
 
-    public void tick() {
-
-
-    }
 
 
 }
