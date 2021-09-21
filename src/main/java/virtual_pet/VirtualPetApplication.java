@@ -12,6 +12,7 @@ public class VirtualPetApplication {
     public static void main(String[] args) {
         VirtualPetApplication game = new VirtualPetApplication();
         game.llama = new VirtualPet("Llama Charlie", 50,50,50);
+
         System.out.println("Welcome to the Virtual Pet Farm! I'm" + game.llama.getName());
         game.gettingStarted();
     }
