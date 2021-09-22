@@ -11,6 +11,12 @@ public class VirtualPetShelter {
     private Object VirtualPet;
     ArrayList<VirtualPet> petShelter = new ArrayList<VirtualPet>();
 
+    public void shelterList(){
+        petShelter.add(new VirtualPet("Beebo",50,50,50));
+        petShelter.add(new VirtualPet("Revvo",50,50,50));
+
+    }
+
 
     public void addNewPet() {
         Scanner  input = new Scanner(System.in);

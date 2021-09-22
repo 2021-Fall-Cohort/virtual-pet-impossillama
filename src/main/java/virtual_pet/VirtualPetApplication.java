@@ -14,19 +14,14 @@ public class VirtualPetApplication {
         VirtualPetApplication game = new VirtualPetApplication();
         VirtualPetShelter myShelter = game.myShelter;
         myShelter.addNewPet();
+
     }
 
 
 //    public void gettingStarted() {
-//
-//        ArrayList<String> llamaStats = new ArrayList<String>();
-//        llamaStats.add("Hunger Level: " + llama.getHungerLevel());
-//        llamaStats.add("Thirst Level: " + llama.getThirstLevel());
-//        llamaStats.add("Boredom Level: "+ llama.getBoredomLevel());
-//
 //        System.out.println("You can feed me, give me water, and check my boredom level! But beware! If I get bored, I spit! ");
-//        System.out.println("My stats are currently:" + llamaStats);
-//        petInteraction();
+//
+//
 //    }
 //
 //    public void petInteraction(){
@@ -56,13 +51,7 @@ public class VirtualPetApplication {
 //                System.out.print("Thanks! that was fun!");
 //
 //            } else if(interactionReply.equalsIgnoreCase("stats") || interactionReply.equalsIgnoreCase("get stats")) {
-//                System.out.println("My stats are currently: " );
-//                System.out.println("My stats are: ");
-//                System.out.println("Hunger Level: " + llama.getHungerLevel());
-//                System.out.println("Thirst Level: " + llama.getThirstLevel());
-//                System.out.println("Boredom Level: " +llama.getBoredomLevel());
-//            } else {
-//                System.out.println(" ");
+//                System.out.println("You currently have " + myShelter.petShelter.size() + " pets");
 //            }
 //        } while (!stop || !alive);
 //    }
