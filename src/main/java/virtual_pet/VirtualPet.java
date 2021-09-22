@@ -20,6 +20,7 @@ public class VirtualPet {
 
     }
 
+
     public String getName() {
 
         return name;
