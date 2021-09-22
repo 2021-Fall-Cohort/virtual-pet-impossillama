@@ -20,6 +20,21 @@ public class VirtualPet {
 
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHungerLevel(int hungerLevel) {
+        this.hungerLevel = hungerLevel;
+    }
+
+    public void setThirstLevel(int thirstLevel) {
+        this.thirstLevel = thirstLevel;
+    }
+
+    public void setBoredomLevel(int boredomLevel) {
+        this.boredomLevel = boredomLevel;
+    }
 
     public String getName() {
 

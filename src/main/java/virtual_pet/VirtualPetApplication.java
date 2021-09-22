@@ -6,17 +6,16 @@ import java.util.Scanner;
 
 public class VirtualPetApplication {
 
-    VirtualPet llama;
+
     VirtualPetShelter myShelter = new VirtualPetShelter();
 
 
     public static void main(String[] args) {
         VirtualPetApplication game = new VirtualPetApplication();
         VirtualPetShelter myShelter = game.myShelter;
-        myShelter.addPet();
-
-
+        myShelter.addNewPet();
     }
+
 
 //    public void gettingStarted() {
 //
