@@ -1,8 +1,61 @@
 package virtual_pet;
 
-public class VirtualPetShelter extends VirtualPet {
+import java.util.ArrayList;
+import java.util.Scanner;
 
-    
+public class VirtualPetShelter {
+
+    private ArrayList <VirtualPet> petShelter;
+
+    public VirtualPetShelter() {
+        petShelter = new ArrayList<VirtualPet>();
+        petShelter.add(new VirtualPet("Beebo",50,50,50));
+        petShelter.add(new VirtualPet("Revvo",50,50,50));
+
+    }
+
+
+
+    public void addNewPet(VirtualPet pet) {
+        petShelter.add(pet);
+    }
+
+
+
+    public ArrayList<VirtualPet> getPets() {
+        return petShelter;
+    }
+
+    public void feedAllPets() {
+        for (VirtualPet petsToFeed : petShelter) {
+            petsToFeed.feed();
+
+        }
+    }
+
+    public void waterAllPets() {
+        for(VirtualPet petsToWater : petShelter) {
+            petsToWater.water();
+        }
+    }
+
+    public void playWithPet() {
+        Scanner input = new Scanner(System.in);
+        String pet;
+        pet = input.nextLine();
+        for (VirtualPet  petToPlayWith : petShelter){
+            if (pet == petToPlayWith.getName()) {
+                petToPlayWith.play();
+
+            }
+
+        }
+
+    }
+
+
+
+
 
 
 }

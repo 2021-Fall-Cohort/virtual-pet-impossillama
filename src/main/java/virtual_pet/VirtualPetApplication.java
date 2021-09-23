@@ -6,66 +6,99 @@ import java.util.Scanner;
 
 public class VirtualPetApplication {
 
-    VirtualPet llama;
+    VirtualPetShelter myShelter = new VirtualPetShelter();
+
+
 
 
     public static void main(String[] args) {
         VirtualPetApplication game = new VirtualPetApplication();
-        game.llama = new VirtualPet("Llama Charlie", 50,50,50);
-        System.out.println("Welcome to the Virtual Pet Farm! I'm" + game.llama.getName());
-        game.gettingStarted();
+        game.gameLoop();
     }
 
-    public void gettingStarted() {
+    public void gameLoop() {
+        listPets(myShelter);
 
-        ArrayList<String> llamaStats = new ArrayList<String>();
-        llamaStats.add("Hunger Level: " + llama.getHungerLevel());
-        llamaStats.add("Thirst Level: " + llama.getThirstLevel());
-        llamaStats.add("Boredom Level: "+ llama.getBoredomLevel());
-
-        System.out.println("You can feed me, give me water, and check my boredom level! But beware! If I get bored, I spit! ");
-        System.out.println("My stats are currently:" + llamaStats);
-        petInteraction();
-    }
-
-    public void petInteraction(){
-        Scanner interaction =  new Scanner(System.in);
-        String interactionReply;
-        boolean stop = false ;
-        boolean alive = true;
-
-
+        System.out.println("Welcome to the pet shelter! Here you can feed your pets, " +
+                "adopt them out or add new pets to the list");
+        System.out.println("If you want to feed the pets please press 1 \n" +
+                "If you want water pets press 2 \n" +
+                "If you want to play with a pet press 3 \n" +
+                "If you want to adopt a  pet press 4 \n" +
+                "If you want to admit a pet press 5\n" +
+                "If you want to remove a pet press 6\n " +
+                "To close out the program, just enter quit ");
 
         do {
-            System.out.println("You can check my stats, feed me, give me water, and we can play!" +
-                    " But make sure I'm not about to spit by checking my boredom level");
-            interactionReply = interaction.nextLine();
+            Scanner input = new Scanner(System.in);
+            int menuChoice;
 
-            if (interactionReply.equalsIgnoreCase("feed") ||interactionReply.equalsIgnoreCase("give food") ){
-                if (llama.getHungerLevel() >= 100) {
-                    System.out.println("If I eat one more thing, I'll get sick!");
-                }
-                System.out.print("Thanks I was hungry!");
-                llama.feed();
-            } else if(interactionReply.equalsIgnoreCase("water") || interactionReply.equalsIgnoreCase("give water")) {
-                llama.water();
-                System.out.println("Thanks! I was getting really thirsty!");
-            } else if( interactionReply.equalsIgnoreCase("play")|| interactionReply.equalsIgnoreCase("let's play")) {
-                llama.play();
-                System.out.print("Thanks! that was fun!");
+            menuChoice = input.nextInt();
 
-            } else if(interactionReply.equalsIgnoreCase("stats") || interactionReply.equalsIgnoreCase("get stats")) {
-                System.out.println("My stats are currently: " );
-                System.out.println("My stats are: ");
-                System.out.println("Hunger Level: " + llama.getHungerLevel());
-                System.out.println("Thirst Level: " + llama.getThirstLevel());
-                System.out.println("Boredom Level: " +llama.getBoredomLevel());
-            } else {
-                System.out.println(" ");
+            switch(menuChoice){
+                case 1:
+                    myShelter.feedAllPets();
+                    System.out.println("All pets are fed!");
+                    break;
+                case 2:
+                    myShelter.waterAllPets();
+                    System.out.println("All pets are watered!");
+                    break;
+                case 3:
+                    System.out.println("Which pet would you like to play with?");
+                    myShelter.playWithPet();
+                    System.out.println("That was fun!");
+                    break;
+                case 4:
+                    System.out.println("coming soon");
+                    break;
+                case 5:
+                    myShelter.addNewPet(createPet());
+                    System.out.println("New Pet Created!");
+                    break;
+                default:
+                    System.out.println("Oops you broke it");
+                    break;
+
             }
-        } while (!stop || !alive);
+
+        }while(!false);
+
+    }
+    public VirtualPet createPet(){
+        Scanner input = new Scanner(System.in);
+        String newPetName;
+
+        VirtualPet newPet = new VirtualPet("",0,0,0);
+
+        System.out.println("You want to add a new pet? Okay what is their name?");
+        newPetName = input.nextLine();
+        newPet.setName(newPetName);
+        newPet.setHungerLevel((int)Math.floor(Math.random() * 100));
+        newPet.setThirstLevel((int)Math.floor(Math.random() * 100));
+        newPet.setBoredomLevel((int)Math.floor(Math.random() * 100));
+
+        newPet = new VirtualPet(newPetName, newPet.getHungerLevel(), newPet.getThirstLevel(), newPet.getBoredomLevel());
+
+
+
+
+        System.out.println("Your new pet has been created!");
+
+        return newPet;
+
     }
 
 
+    public void listPets(VirtualPetShelter petShelter){
+        System.out.println("List of pets: ");
+        for (VirtualPet pet : petShelter.getPets()){
+            System.out.println("Name:" + pet.getName());
+            System.out.println("Hunger Level: " + pet.getHungerLevel());
+            System.out.println("Thirst Level: " + pet.getThirstLevel());
+            System.out.println("Boredom Level: " + pet.getBoredomLevel() + "\n");
+
+        }
+    }
 
 }
