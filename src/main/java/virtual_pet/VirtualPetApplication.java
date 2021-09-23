@@ -14,16 +14,15 @@ public class VirtualPetApplication {
         VirtualPetApplication game = new VirtualPetApplication();
         VirtualPetShelter myShelter = game.myShelter;
         myShelter.addNewPet();
-
     }
 
 
-//    public void gettingStarted() {
+//    public void petShelterInteraction() {
 //        System.out.println("You can feed me, give me water, and check my boredom level! But beware! If I get bored, I spit! ");
 //
 //
 //    }
-//
+
 //    public void petInteraction(){
 //        Scanner interaction =  new Scanner(System.in);
 //        String interactionReply;
