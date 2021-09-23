@@ -40,6 +40,22 @@ public class VirtualPet {
         return boredomLevel;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHungerLevel(int hungerLevel) {
+        this.hungerLevel = hungerLevel;
+    }
+
+    public void setThirstLevel(int thirstLevel) {
+        this.thirstLevel = thirstLevel;
+    }
+
+    public void setBoredomLevel(int boredomLevel) {
+        this.boredomLevel = boredomLevel;
+    }
+
     public void feed() {
 
         this.hungerLevel = Math.max(0,hungerLevel-15);
