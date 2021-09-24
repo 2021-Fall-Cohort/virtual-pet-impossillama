@@ -19,6 +19,9 @@ public class VirtualPetShelter {
     public void addNewPet(VirtualPet pet) {
         petShelter.add(pet);
     }
+    public void removePet(VirtualPet pet) {
+        petShelter.remove(pet);
+    }
 
 
 
@@ -51,6 +54,16 @@ public class VirtualPetShelter {
 
         }
 
+    }
+    public void AdoptPet() {
+        Scanner input = new Scanner(System.in);
+        String pet;
+        pet = input.nextLine();
+        for (VirtualPet petToAdopt : petShelter) {
+            if (pet == petToAdopt.getName()) {
+                removePet(petToAdopt);
+            }
+        }
     }
 
 
