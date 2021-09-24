@@ -13,7 +13,7 @@ public class VirtualPet {
     private int thirstLevel;
     private int boredomLevel;
 
-    public VirtualPet(String name, String description, int hungerLevel, int thirstLevel, int boredomLevel){
+    public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
         this.hungerLevel = (int)Math.floor(Math.random() * 100);
@@ -68,25 +68,26 @@ public class VirtualPet {
 
     public void feed() {
 
-        this.hungerLevel = Math.max(0,hungerLevel-15);
-        tick();
+        this.hungerLevel = Math.min(0,hungerLevel-15);
+
     }
 
     public void water() {
 
-        this.thirstLevel = Math.max(0, thirstLevel-15);
-        tick();
+        this.thirstLevel = Math.min(0, thirstLevel-15);
+        
     }
 
     public  void play() {
-        this.boredomLevel = Math.max(0, boredomLevel-10);
-        tick();
+        this.boredomLevel = Math.min(0, boredomLevel-10);
+        this.hungerLevel = Math.max(100, hungerLevel +5);
+        this.thirstLevel = Math.max(100, thirstLevel +5);
     }
 
     public void tick() {
-        this.hungerLevel = Math.min(100,hungerLevel+5);
-        this.thirstLevel = Math.min(100, thirstLevel+5);
-        this.boredomLevel = Math.min(100, boredomLevel-5);
+        this.hungerLevel = Math.max(100,hungerLevel+5);
+        this.thirstLevel = Math.max(100, thirstLevel+5);
+        this.boredomLevel = Math.max(100, boredomLevel-5);
 
 
     }

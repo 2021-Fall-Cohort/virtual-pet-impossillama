@@ -40,7 +40,7 @@ public class VirtualPetApplication {
 
             menuChoice = input.nextInt();
 
-            myShelter.tickAllPets();
+
 
             switch(menuChoice){
                 case 1:
@@ -86,7 +86,7 @@ public class VirtualPetApplication {
         String newPetName;
         String newPetDescription;
 
-        VirtualPet newPet = new VirtualPet("","",0,0,0);
+        VirtualPet newPet = new VirtualPet("","");
 
         System.out.println("You want to add a new pet? Okay what is their name?");
         newPetName = input.nextLine();
@@ -100,7 +100,7 @@ public class VirtualPetApplication {
         newPet.setThirstLevel((int)Math.floor(Math.random() * 100));
         newPet.setBoredomLevel((int)Math.floor(Math.random() * 100));
 
-        newPet = new VirtualPet(newPetName, newPetDescription,  newPet.getHungerLevel(), newPet.getThirstLevel(), newPet.getBoredomLevel());
+        newPet = new VirtualPet(newPetName, newPetDescription);
 
 
 

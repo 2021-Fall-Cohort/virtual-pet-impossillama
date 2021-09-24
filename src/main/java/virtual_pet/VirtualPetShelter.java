@@ -9,8 +9,8 @@ public class VirtualPetShelter {
 
     public VirtualPetShelter() {
         petShelter = new ArrayList<VirtualPet>();
-        petShelter.add(new VirtualPet("Beebo"," Is covered in fleas",50,50,50));
-        petShelter.add(new VirtualPet("Revvo","Needs a rabies shot",50,50,50));
+        petShelter.add(new VirtualPet("Beebo"," Is covered in fleas"));
+        petShelter.add(new VirtualPet("Revvo","Needs a rabies shot"));
 
     }
 
@@ -60,7 +60,6 @@ public class VirtualPetShelter {
             if (pet == petToPlayWith.getName()) {
                 petToPlayWith.play();
 
-
             }
 
         }
@@ -70,6 +69,7 @@ public class VirtualPetShelter {
     public void listPetDescriptions() {
         for(VirtualPet petsForAdoption : petShelter) {
             System.out.println(petsForAdoption.getName() + " " + petsForAdoption.getDescription());
+            tickAllPets();
         }
     }
 
@@ -80,6 +80,7 @@ public class VirtualPetShelter {
         for(VirtualPet adoptablePet : petShelter) {
             adoptablePet.equals(petToAdoptOut);
             removePet(adoptablePet);
+            tickAllPets();
         }
 
     }
