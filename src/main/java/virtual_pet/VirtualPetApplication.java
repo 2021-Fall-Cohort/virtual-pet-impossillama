@@ -54,8 +54,9 @@ public class VirtualPetApplication {
                     System.out.println("That was fun!");
                     break;
                 case 4:
-                    myShelter.adoptPet();
-                    System.out.println("Farewell!");
+                    System.out.println("Which pet would you like to take home with you?");
+                    myShelter.AdoptPet();
+                    System.out.println("What a great choice!");
                     break;
                 case 5:
                     myShelter.addNewPet(createPet());
