@@ -17,12 +17,30 @@ public class VirtualPetShelter {
 
 
     public void addNewPet(VirtualPet pet) {
+
         petShelter.add(pet);
+    }
+
+    public void removePet(VirtualPet pet) {
+        petShelter.remove(pet);
+    }
+
+    public void adoptPet() {
+        Scanner input =  new Scanner(System.in);
+        String petToAdoptOut;
+        petToAdoptOut = input.nextLine();
+        for(VirtualPet animalForAdoption : petShelter) {
+            if( petToAdoptOut == animalForAdoption.getName()) {
+               removePet(animalForAdoption);
+            }
+        }
+
     }
 
 
 
     public ArrayList<VirtualPet> getPets() {
+
         return petShelter;
     }
 
@@ -30,12 +48,20 @@ public class VirtualPetShelter {
         for (VirtualPet petsToFeed : petShelter) {
             petsToFeed.feed();
 
+
+        }
+    }
+
+    public void tickAllPets(){
+        for(VirtualPet petsToTick : petShelter) {
+            petsToTick.tick();
         }
     }
 
     public void waterAllPets() {
         for(VirtualPet petsToWater : petShelter) {
             petsToWater.water();
+
         }
     }
 
@@ -46,6 +72,7 @@ public class VirtualPetShelter {
         for (VirtualPet  petToPlayWith : petShelter){
             if (pet == petToPlayWith.getName()) {
                 petToPlayWith.play();
+
 
             }
 

@@ -18,6 +18,7 @@ public class VirtualPetApplication {
 
     public void gameLoop() {
         listPets(myShelter);
+        Boolean quit = false;
 
         System.out.println("Welcome to the pet shelter! Here you can feed your pets, " +
                 "adopt them out or add new pets to the list");
@@ -26,14 +27,17 @@ public class VirtualPetApplication {
                 "If you want to play with a pet press 3 \n" +
                 "If you want to adopt a  pet press 4 \n" +
                 "If you want to admit a pet press 5\n" +
-                "If you want to remove a pet press 6\n " +
-                "To close out the program, just enter quit ");
+                "If you want to list their stats press 6\n " +
+                "If you want to view the menu, press 7 \n" +
+                "To close out the program, just enter quit");
 
         do {
             Scanner input = new Scanner(System.in);
             int menuChoice;
 
             menuChoice = input.nextInt();
+
+            myShelter.tickAllPets();
 
             switch(menuChoice){
                 case 1:
@@ -50,19 +54,25 @@ public class VirtualPetApplication {
                     System.out.println("That was fun!");
                     break;
                 case 4:
-                    System.out.println("coming soon");
+                    myShelter.adoptPet();
+                    System.out.println("Farewell!");
                     break;
                 case 5:
                     myShelter.addNewPet(createPet());
                     System.out.println("New Pet Created!");
                     break;
+                case 6:
+                    System.out.println("Here's all the pets currently in your shelter: ");
+                    listPets(myShelter);
+                    break;
                 default:
                     System.out.println("Oops you broke it");
                     break;
 
-            }
+             }
 
-        }while(!false);
+
+        }while(!quit);
 
     }
     public VirtualPet createPet(){
@@ -88,6 +98,7 @@ public class VirtualPetApplication {
         return newPet;
 
     }
+
 
 
     public void listPets(VirtualPetShelter petShelter){
