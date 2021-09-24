@@ -13,33 +13,16 @@ public class VirtualPetShelter {
         petShelter.add(new VirtualPet("Revvo",50,50,50));
 
     }
-
-
+    
 
     public void addNewPet(VirtualPet pet) {
 
         petShelter.add(pet);
     }
     public void removePet(VirtualPet pet) {
+
         petShelter.remove(pet);
     }
-
-    public void removePet(VirtualPet pet) {
-        petShelter.remove(pet);
-    }
-
-    public void adoptPet() {
-        Scanner input =  new Scanner(System.in);
-        String petToAdoptOut;
-        petToAdoptOut = input.nextLine();
-        for(VirtualPet animalForAdoption : petShelter) {
-            if( petToAdoptOut == animalForAdoption.getName()) {
-               removePet(animalForAdoption);
-            }
-        }
-
-    }
-
 
 
     public ArrayList<VirtualPet> getPets() {
@@ -82,20 +65,17 @@ public class VirtualPetShelter {
         }
 
     }
-    public void AdoptPet() {
-        Scanner input = new Scanner(System.in);
-        String pet;
-        pet = input.nextLine();
-        for (VirtualPet petToAdopt : petShelter) {
-            if (pet == petToAdopt.getName()) {
-                removePet(petToAdopt);
+
+    public void adoptPet() {
+        Scanner input =  new Scanner(System.in);
+        String petToAdoptOut;
+        petToAdoptOut = input.nextLine();
+        for(VirtualPet animalForAdoption : petShelter) {
+            if( petToAdoptOut == animalForAdoption.getName()) {
+                removePet(animalForAdoption);
             }
         }
+
     }
-
-
-
-
-
 
 }
