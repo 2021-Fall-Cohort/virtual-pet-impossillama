@@ -22,6 +22,9 @@ public class VirtualPetApplication {
 
         System.out.println("Welcome to the pet shelter! Here you can feed your pets, " +
                 "adopt them out or add new pets to the list");
+        System.out.println("here is the status of all of your pets: \n");
+        listPets(myShelter);
+
         System.out.println("If you want to feed the pets please press 1 \n" +
                 "If you want water pets press 2 \n" +
                 "If you want to play with a pet press 3 \n" +
@@ -55,8 +58,10 @@ public class VirtualPetApplication {
                     break;
                 case 4:
                     System.out.println("Which pet would you like to take home with you?");
+                    myShelter.listPetDescriptions();
                     myShelter.adoptPet();
                     System.out.println("What a great choice!");
+                    listPets(myShelter);
                     break;
                 case 5:
                     myShelter.addNewPet(createPet());
@@ -79,17 +84,23 @@ public class VirtualPetApplication {
     public VirtualPet createPet(){
         Scanner input = new Scanner(System.in);
         String newPetName;
+        String newPetDescription;
 
-        VirtualPet newPet = new VirtualPet("",0,0,0);
+        VirtualPet newPet = new VirtualPet("","",0,0,0);
 
         System.out.println("You want to add a new pet? Okay what is their name?");
         newPetName = input.nextLine();
+
+        System.out.println("Describe the pet");
+        newPetDescription = input.nextLine();
+
         newPet.setName(newPetName);
+        newPet.setDescription(newPetDescription);
         newPet.setHungerLevel((int)Math.floor(Math.random() * 100));
         newPet.setThirstLevel((int)Math.floor(Math.random() * 100));
         newPet.setBoredomLevel((int)Math.floor(Math.random() * 100));
 
-        newPet = new VirtualPet(newPetName, newPet.getHungerLevel(), newPet.getThirstLevel(), newPet.getBoredomLevel());
+        newPet = new VirtualPet(newPetName, newPetDescription,  newPet.getHungerLevel(), newPet.getThirstLevel(), newPet.getBoredomLevel());
 
 
 
@@ -106,6 +117,7 @@ public class VirtualPetApplication {
         System.out.println("List of pets: ");
         for (VirtualPet pet : petShelter.getPets()){
             System.out.println("Name:" + pet.getName());
+            System.out.println("Description: " + pet.getDescription());
             System.out.println("Hunger Level: " + pet.getHungerLevel());
             System.out.println("Thirst Level: " + pet.getThirstLevel());
             System.out.println("Boredom Level: " + pet.getBoredomLevel() + "\n");

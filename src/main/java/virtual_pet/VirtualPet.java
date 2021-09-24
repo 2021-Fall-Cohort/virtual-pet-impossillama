@@ -8,21 +8,31 @@ import java.util.Scanner;
 
 public class VirtualPet {
     private String name;
+    private String description;
     private int hungerLevel;
     private int thirstLevel;
     private int boredomLevel;
 
-    public VirtualPet(String name, int hungerLevel, int thirstLevel, int boredomLevel){
+    public VirtualPet(String name, String description, int hungerLevel, int thirstLevel, int boredomLevel){
         this.name = name;
-        this.hungerLevel = hungerLevel;
-        this.thirstLevel = thirstLevel;
-        this.boredomLevel = boredomLevel;
+        this.description = description;
+        this.hungerLevel = (int)Math.floor(Math.random() * 100);
+        this.thirstLevel = (int)Math.floor(Math.random() * 100);
+        this.boredomLevel = (int)Math.floor(Math.random() * 100);
 
     }
 
     public String getName() {
 
         return name;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getHungerLevel() {
