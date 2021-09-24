@@ -84,5 +84,13 @@ public class VirtualPetShelter {
         }
 
     }
+    public boolean deadPetSearch(){
+        for(VirtualPet deadPet : petShelter){
+            if(deadPet.isDead()) {
+                return true;
+            }
+        }
+            return false;
+    }
 
 }

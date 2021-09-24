@@ -17,7 +17,6 @@ public class VirtualPetApplication {
     }
 
     public void gameLoop() {
-        listPets(myShelter);
         Boolean quit = false;
 
         System.out.println("Welcome to the pet shelter! Here you can feed your pets, " +
@@ -25,22 +24,31 @@ public class VirtualPetApplication {
         System.out.println("here is the status of all of your pets: \n");
         listPets(myShelter);
 
-        System.out.println("If you want to feed the pets please press 1 \n" +
-                "If you want water pets press 2 \n" +
-                "If you want to play with a pet press 3 \n" +
-                "If you want to adopt a  pet press 4 \n" +
-                "If you want to admit a pet press 5\n" +
-                "If you want to list their stats press 6\n " +
-                "If you want to quit the menu, press 7 \n" +
-                "To close out the program, just enter quit");
 
         do {
+            if(myShelter.deadPetSearch()){
+                System.out.println("A pet has died");
+                System.out.println("This shelter has been closed by the ASPCA");
+
+
+                break;
+            }
+            System.out.println("If you want to feed the pets please press 1 \n" +
+                    "If you want water pets press 2 \n" +
+                    "If you want to play with a pet press 3 \n" +
+                    "If you want to adopt a  pet press 4 \n" +
+                    "If you want to admit a pet press 5\n" +
+                    "If you want to list their stats press 6\n " +
+                    "If you want to quit the menu, press 7 \n" +
+                    "To close out the program, just enter quit");
+
             Scanner input = new Scanner(System.in);
             int menuChoice;
 
             menuChoice = input.nextInt();
 
             myShelter.tickAllPets();
+
 
             switch(menuChoice){
                 case 1:
@@ -82,7 +90,7 @@ public class VirtualPetApplication {
 
 
         }while(!quit);
-
+        System.out.println("Game Over");
     }
     public VirtualPet createPet(){
         Scanner input = new Scanner(System.in);
@@ -127,5 +135,10 @@ public class VirtualPetApplication {
 
         }
     }
+    public void healthCheck(VirtualPetShelter petDied){
+        System.out.println("One of your pets has died!");
+        petDied.deadPetSearch();
+    }
+
 
 }
