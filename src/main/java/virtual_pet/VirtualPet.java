@@ -75,7 +75,7 @@ public class VirtualPet {
     public void water() {
 
         this.thirstLevel = Math.min(0, thirstLevel-15);
-        
+
     }
 
     public  void play() {

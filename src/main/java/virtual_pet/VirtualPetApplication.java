@@ -31,7 +31,7 @@ public class VirtualPetApplication {
                 "If you want to adopt a  pet press 4 \n" +
                 "If you want to admit a pet press 5\n" +
                 "If you want to list their stats press 6\n " +
-                "If you want to view the menu, press 7 \n" +
+                "If you want to quit the menu, press 7 \n" +
                 "To close out the program, just enter quit");
 
         do {
@@ -40,7 +40,7 @@ public class VirtualPetApplication {
 
             menuChoice = input.nextInt();
 
-
+            myShelter.tickAllPets();
 
             switch(menuChoice){
                 case 1:
@@ -71,6 +71,9 @@ public class VirtualPetApplication {
                     System.out.println("Here's all the pets currently in your shelter: ");
                     listPets(myShelter);
                     break;
+                case 7:
+                    System.out.println("See you nexd time!");
+                    quit = true;
                 default:
                     System.out.println("Oops you broke it");
                     break;
