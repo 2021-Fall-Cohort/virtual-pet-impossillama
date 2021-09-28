@@ -69,7 +69,7 @@ public class VirtualPet {
     public void feed() {
 
         this.hungerLevel = Math.min(0,hungerLevel-15);
-
+        this.hungerLevel = Math.max(100, hungerLevel -15);
     }
 
     public void water() {
@@ -85,12 +85,21 @@ public class VirtualPet {
     }
 
     public void tick() {
-        this.hungerLevel = Math.max(100,hungerLevel+5);
-        this.thirstLevel = Math.max(100, thirstLevel+5);
-        this.boredomLevel = Math.max(100, boredomLevel-5);
-
+        this.hungerLevel = Math.min(100,hungerLevel+5);
+        this.thirstLevel = Math.min(100, thirstLevel+5);
+        this.boredomLevel = Math.min(100, boredomLevel+5);
 
     }
 
+    public boolean isDead(){
+
+        if (hungerLevel == 100 || thirstLevel == 100){
+            return true;
+        }
+        else if(boredomLevel == 100){
+            return true;
+        }
+        return false;
+    }
 
 }
