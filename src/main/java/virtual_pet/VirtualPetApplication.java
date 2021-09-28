@@ -72,7 +72,7 @@ public class VirtualPetApplication {
                     listPets(myShelter);
                     break;
                 case 7:
-                    System.out.println("See you nexd time!");
+                    System.out.println("See you next time!");
                     quit = true;
                 default:
                     System.out.println("Oops you broke it");
