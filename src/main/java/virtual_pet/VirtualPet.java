@@ -93,7 +93,6 @@ public class VirtualPet {
     public boolean isDead(){
 
         if (this.hungerLevel >= 100 || this.thirstLevel >= 100){
-            System.out.println(getName() + "has died");
             return true;
         }
         return false;

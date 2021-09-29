@@ -45,7 +45,6 @@ public class VirtualPetApplication {
             myShelter.tickAllPets();
             healthCheck(myShelter);
             if (myShelter.deadPetSearch()) {
-                System.out.println("One of your pets has died");
                 break;
             }
 
