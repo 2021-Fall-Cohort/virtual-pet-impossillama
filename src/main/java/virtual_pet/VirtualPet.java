@@ -68,35 +68,32 @@ public class VirtualPet {
 
     public void feed() {
 
-        this.hungerLevel = Math.min(0,hungerLevel-15);
-        this.hungerLevel = Math.max(100, hungerLevel -15);
+        this.hungerLevel -= 15 ;
     }
 
     public void water() {
 
-        this.thirstLevel = Math.min(0, thirstLevel-15);
+        this.thirstLevel -= 15;
 
     }
 
     public  void play() {
-        this.boredomLevel = Math.min(0, boredomLevel-10);
-        this.hungerLevel = Math.max(100, hungerLevel +5);
-        this.thirstLevel = Math.max(100, thirstLevel +5);
+        this.boredomLevel -= 15;
+        this.hungerLevel += 5;
+        this.thirstLevel += 5;
     }
 
     public void tick() {
-        this.hungerLevel = Math.min(100,hungerLevel+5);
-        this.thirstLevel = Math.min(100, thirstLevel+5);
-        this.boredomLevel = Math.min(100, boredomLevel+5);
+        this.hungerLevel += 5;
+        this.thirstLevel += 5;
+        this.boredomLevel += 5;
 
     }
 
     public boolean isDead(){
 
-        if (hungerLevel == 100 || thirstLevel == 100){
-            return true;
-        }
-        else if(boredomLevel == 100){
+        if (this.hungerLevel >= 100 || this.thirstLevel >= 100){
+            System.out.println(getName() + "has died");
             return true;
         }
         return false;

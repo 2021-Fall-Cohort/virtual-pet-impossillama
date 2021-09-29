@@ -26,6 +26,8 @@ public class VirtualPetApplication {
 
 
         do {
+
+
             System.out.println("If you want to feed the pets please press 1 \n" +
                     "If you want water pets press 2 \n" +
                     "If you want to play with a pet press 3 \n" +
@@ -42,12 +44,13 @@ public class VirtualPetApplication {
 
             myShelter.tickAllPets();
             healthCheck(myShelter);
-
-            if(myShelter.deadPetSearch()){
-                System.out.println("A pet has died");
-                System.out.println("This shelter has been closed by the ASPCA");
+            if (myShelter.deadPetSearch()) {
+                System.out.println("One of your pets has died");
                 break;
             }
+
+
+
 
             switch(menuChoice){
                 case 1:
@@ -88,7 +91,7 @@ public class VirtualPetApplication {
              }
 
 
-        }while(!quit|| !myShelter.deadPetSearch());
+        }while(!quit || !myShelter.deadPetSearch());
         System.out.println("Game Over");
     }
     public VirtualPet createPet(){
@@ -134,6 +137,7 @@ public class VirtualPetApplication {
 
         }
     }
+
     public void healthCheck(VirtualPetShelter petDied){
         System.out.println("One of your pets has died!");
         petDied.deadPetSearch();
