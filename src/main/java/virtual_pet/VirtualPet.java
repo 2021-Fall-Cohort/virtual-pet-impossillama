@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 
 
-public class VirtualPet {
+public abstract class VirtualPet extends VirtualPetApplication {
     private String name;
     private String description;
-    private int hungerLevel;
-    private int thirstLevel;
-    private int boredomLevel;
+    protected int hungerLevel;
+    protected int thirstLevel;
+    protected int boredomLevel;
 
     public VirtualPet(String name, String description){
         this.name = name;
