@@ -43,8 +43,11 @@ public class VirtualPetApplication {
             menuChoice = input.nextInt();
 
             myShelter.tickAllPets();
+
             healthCheck(myShelter);
+            boredomCheck(myShelter);
             if (myShelter.deadPetSearch()) {
+                System.out.println("One of your pets has died");
                 break;
             }
 
@@ -138,9 +141,16 @@ public class VirtualPetApplication {
     }
 
     public void healthCheck(VirtualPetShelter petDied){
-        System.out.println("One of your pets has died!");
         petDied.deadPetSearch();
     }
 
+    public void boredomCheck(VirtualPetShelter petDied){
+        for(VirtualPet boredPet : myShelter.getPets()) {
+            if (boredPet.isBored()){
+                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
+                        "want to play with th em");
+            }
 
+        }
+    }
 }
