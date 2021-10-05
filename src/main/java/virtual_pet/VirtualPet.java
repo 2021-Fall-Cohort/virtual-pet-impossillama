@@ -16,9 +16,11 @@ public class VirtualPet extends VirtualPetApplication {
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
-        this.hungerLevel = (int)Math.floor(Math.random() * 100);
+        this.hungerLevel = 50;
+//        this.hungerLevel = (int)Math.floor(Math.random() * 100);
         this.thirstLevel = (int)Math.floor(Math.random() * 100);
-        this.boredomLevel = (int)Math.floor(Math.random() * 100);
+        this.boredomLevel = 90;
+//        this.boredomLevel = (int)Math.floor(Math.random() * 100);
 
     }
 
@@ -68,31 +70,38 @@ public class VirtualPet extends VirtualPetApplication {
 
     public void feed() {
 
-        this.hungerLevel -= 15 ;
+        hungerLevel -= 15 ;
     }
 
     public void water() {
 
-        this.thirstLevel -= 15;
+        thirstLevel -= 15;
 
     }
 
     public  void play() {
-        this.boredomLevel -= 15;
-        this.hungerLevel += 5;
-        this.thirstLevel += 5;
+        boredomLevel -= 15;
+        hungerLevel += 5;
+        thirstLevel += 5;
     }
 
     public void tick() {
-        this.hungerLevel += 5;
-        this.thirstLevel += 5;
-        this.boredomLevel += 5;
+        hungerLevel += 5;
+        thirstLevel += 5;
+        boredomLevel += 5;
 
     }
 
     public boolean isDead(){
 
-        if (this.hungerLevel >= 100 || this.thirstLevel >= 100){
+        if (hungerLevel >= 100 || thirstLevel >= 100){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBored(){
+        if (boredomLevel >= 100) {
             return true;
         }
         return false;
