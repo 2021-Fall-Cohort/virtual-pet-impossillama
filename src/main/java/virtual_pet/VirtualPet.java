@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 
 public class VirtualPet extends VirtualPetApplication {
-    private String name;
-    private String description;
+    protected String name;
+    protected String description;
     private int hungerLevel;
     private int thirstLevel;
     private int boredomLevel;
@@ -16,11 +16,10 @@ public class VirtualPet extends VirtualPetApplication {
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
-        this.hungerLevel = 50;
-//        this.hungerLevel = (int)Math.floor(Math.random() * 100);
+        this.hungerLevel = (int)Math.floor(Math.random() * 100);
+        this.hungerLevel = (int)Math.floor(Math.random() * 100);
         this.thirstLevel = (int)Math.floor(Math.random() * 100);
-        this.boredomLevel = 90;
-//        this.boredomLevel = (int)Math.floor(Math.random() * 100);
+        this.boredomLevel = (int)Math.floor(Math.random() * 100);
 
     }
 
@@ -30,6 +29,7 @@ public class VirtualPet extends VirtualPetApplication {
     }
 
     public String getDescription(){
+
         return description;
     }
 

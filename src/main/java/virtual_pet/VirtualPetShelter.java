@@ -1,5 +1,6 @@
 package virtual_pet;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +12,9 @@ public class VirtualPetShelter {
         petShelter = new ArrayList<VirtualPet>();
         petShelter.add(new VirtualPet("Beebo","Is covered in fleas"));
         petShelter.add(new VirtualPet("Revvo","Needs a rabies shot"));
+        petShelter.add(new DogRobo("Frisket", "The best dog in Mainframe"));
+        petShelter.add(new CatRobo("Widget","ROADHOUSE"));
+
     }
 
 

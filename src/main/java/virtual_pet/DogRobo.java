@@ -4,11 +4,14 @@ public class DogRobo extends RoboticPet{
 
     protected String digitalBark;
 
-    public DogRobo(String name, String description, int oilLevel, int batteryCharge, String digitalBark) {
-        super(name, description, oilLevel, batteryCharge);
+    public DogRobo(String name, String description) {
+        super(name, description);
         this.digitalBark = digitalBark;
     }
+
+
     public String getDigitalBark() {
+
         return digitalBark;
     }
 }
