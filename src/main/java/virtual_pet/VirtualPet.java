@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 
-public class VirtualPet {
+public class VirtualPet extends VirtualPetApplication {
     private String name;
     private String description;
     private int hungerLevel;
