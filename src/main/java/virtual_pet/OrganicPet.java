@@ -11,7 +11,6 @@ public class OrganicPet extends VirtualPet {
         this.hungerLevel = (int) Math.floor(Math.random() * 100);
         this.thirstLevel = (int) Math.floor(Math.random() * 100);
         this.hungerLevel = (int)Math.floor(Math.random() * 100);
-        this.boredomLevel = (int) Math.floor(Math.random() * 100);
         this.sanitationLevel = (int) Math.floor(Math.random() * 100);
     }
 
@@ -30,6 +29,10 @@ public class OrganicPet extends VirtualPet {
         return boredomLevel;
     }
 
+    public int getSanitationLevel() {
+        return sanitationLevel;
+    }
+
 
     public  void play() {
         boredomLevel -= 15;
@@ -44,6 +47,7 @@ public class OrganicPet extends VirtualPet {
 
     }
 
+
     @Override
     public void feed() {
         this.hungerLevel += 5;
@@ -53,21 +57,10 @@ public class OrganicPet extends VirtualPet {
 
         this.thirstLevel += 5;
     }
+
     @Override
     public boolean isDead() {
         return super.isDead();
-
-
-
-
-
-
-
-
-//        ArrayList<OrganicPet> organicShelter = new ArrayList<>();
-//        organicShelter.add(new OrganicDog("roofus", "is a peppy liitle puppers!");
-
-
 
     }
 }

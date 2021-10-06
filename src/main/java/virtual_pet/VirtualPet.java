@@ -12,6 +12,7 @@ public abstract class VirtualPet {
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
+        this.boredomLevel = (int) Math.floor(Math.random() * 100);
 
     }
 
@@ -27,6 +28,10 @@ public abstract class VirtualPet {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getBoredomLevel() {
+        return boredomLevel;
     }
 
 

@@ -8,7 +8,10 @@ public class OrganicDog extends OrganicPet implements Walkable {
 
     @Override
     public void walk() {
-        this.boredomLevel -=10 ;
+        this.boredomLevel -= 10 ;
+        this.hungerLevel += 10;
+        this.thirstLevel += 10;
+        this.sanitationLevel -= 10;
     }
 }
 

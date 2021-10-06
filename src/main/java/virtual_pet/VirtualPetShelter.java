@@ -54,6 +54,22 @@ public class VirtualPetShelter {
         }
     }
 
+    public void oilRoboticPets() {
+        for(VirtualPet roboticPets : petShelter) {
+            if(roboticPets instanceof RoboticPet) {
+                ((RoboticPet) roboticPets).refillOil();
+            }
+        }
+    }
+
+    public void chargeRoboticPets() {
+        for(VirtualPet robotPets : petShelter) {
+            if(robotPets instanceof RoboticPet) {
+                ((RoboticPet) robotPets).charge();
+            }
+        }
+    }
+
     public void playWithPet() {
         Scanner input = new Scanner(System.in);
         String pet;

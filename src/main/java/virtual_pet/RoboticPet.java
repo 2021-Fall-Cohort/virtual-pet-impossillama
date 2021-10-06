@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public abstract class RoboticPet extends VirtualPet {
+public class RoboticPet extends VirtualPet {
 
     protected int oilLevel;
     protected int batteryCharge;
