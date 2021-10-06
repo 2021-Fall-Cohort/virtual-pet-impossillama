@@ -1,25 +1,18 @@
 package virtual_pet;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 
-
-public class VirtualPet{
+public abstract class VirtualPet {
     protected String name;
     protected String description;
-    private int hungerLevel;
-    private int thirstLevel;
-    private int boredomLevel;
+    protected int hungerLevel;
+    protected int thirstLevel;
+    protected int boredomLevel;
 
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
-        this.hungerLevel = (int)Math.floor(Math.random() * 100);
-        this.hungerLevel = (int)Math.floor(Math.random() * 100);
-        this.thirstLevel = (int)Math.floor(Math.random() * 100);
-        this.boredomLevel = (int)Math.floor(Math.random() * 100);
+        this.boredomLevel = (int) Math.floor(Math.random() * 100);
 
     }
 
@@ -37,20 +30,11 @@ public class VirtualPet{
         this.description = description;
     }
 
-    public int getHungerLevel() {
-
-        return hungerLevel;
-    }
-
-    public int getThirstLevel() {
-
-        return thirstLevel;
-    }
-
     public int getBoredomLevel() {
-
         return boredomLevel;
     }
+
+
 
     public void setName(String name) {
         this.name = name;
@@ -68,43 +52,10 @@ public class VirtualPet{
         this.boredomLevel = boredomLevel;
     }
 
-    public void feed() {
 
-        hungerLevel -= 15 ;
-    }
+    public abstract void tick();
 
-    public void water() {
+    public abstract void play();
 
-        thirstLevel -= 15;
-
-    }
-
-    public  void play() {
-        boredomLevel -= 15;
-        hungerLevel += 5;
-        thirstLevel += 5;
-    }
-
-    public void tick() {
-        hungerLevel += 5;
-        thirstLevel += 5;
-        boredomLevel += 5;
-
-    }
-
-    public boolean isDead(){
-
-        if (hungerLevel >= 100 || thirstLevel >= 100){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isBored(){
-        if (boredomLevel >= 100) {
-            return true;
-        }
-        return false;
-    }
 
 }

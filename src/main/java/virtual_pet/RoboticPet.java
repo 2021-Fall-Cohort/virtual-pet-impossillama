@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public abstract class RoboticPet extends VirtualPet {
+public class RoboticPet extends VirtualPet {
 
     protected int oilLevel;
     protected int batteryCharge;
@@ -32,11 +32,16 @@ public abstract class RoboticPet extends VirtualPet {
     }
 
     public void chargeBattery() {
-        this.batteryCharge +=10;
+        this.batteryCharge += 10;
     }
 
     public void refillOil() {
         this.oilLevel += 10;
+    }
+
+    @Override
+    public void play() {
+        this.batteryCharge += 10;
     }
 
     @Override
@@ -46,16 +51,13 @@ public abstract class RoboticPet extends VirtualPet {
 
     }
 
-    @Override
 
     public boolean isDead(){
 
-        if (batteryCharge >= 100 || oilLevel >= 100){
+        if (batteryCharge <= 0 || oilLevel <= 0){
             return true;
         }
         return false;
     }
-
-
 
 }
