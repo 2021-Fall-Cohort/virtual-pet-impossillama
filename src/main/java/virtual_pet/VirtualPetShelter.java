@@ -10,11 +10,8 @@ public class VirtualPetShelter {
     public VirtualPetShelter() {
         petShelter = new ArrayList<VirtualPet>();
         petShelter.add(new VirtualPet("Beebo"," Is covered in fleas"));
-        petShelter.add(new VirtualPet("Revvo","Needs a rabies shot"));
-
+        petShelter.add(new VirtualPet("Revvo","Needs a rabies shot"));=
     }
-
-
     public void addNewPet(VirtualPet pet) {
 
         petShelter.add(pet);

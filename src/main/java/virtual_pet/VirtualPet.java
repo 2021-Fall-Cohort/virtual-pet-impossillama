@@ -1,14 +1,9 @@
 package virtual_pet;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
-
-
-public abstract class VirtualPet extends VirtualPetApplication {
-    private String name;
-    private String description;
+public class VirtualPet{
+    protected String name;
+    protected String description;
     protected int hungerLevel;
     protected int thirstLevel;
     protected int boredomLevel;
@@ -35,7 +30,7 @@ public abstract class VirtualPet extends VirtualPetApplication {
         this.description = description;
     }
 
-    public int getHungerLevel() {
+    protected int getHungerLevel() {
 
         return hungerLevel;
     }

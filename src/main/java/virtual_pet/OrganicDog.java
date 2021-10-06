@@ -1,27 +1,36 @@
 package virtual_pet;
 
-public class OrganicDog extends OrganicPet implements Walkable{
+public class OrganicDog extends OrganicPet implements Walkable {
 
-    public OrganicDog(String name, String description, int hungerLevel, int thirstLevel, int boredomLevel) {
-        super(name, description, hungerLevel, thirstLevel, boredomLevel);
+    protected int hungerLevel;
+    protected int thirstLevel;
+    protected int sanitationLevel;
+
+    public OrganicDog (String name, String description, int hungerLevel, int thirstLevel, int sanitationLevel) {
+        super(name, description);
+        this.hungerLevel = hungerLevel;
+        this.thirstLevel = thirstLevel;
+        this.sanitationLevel = sanitationLevel;
+
     }
-
-    @Override
     public void feed() {
-        super.feed();
+        hungerLevel += 5;
     }
-    @Override
     public void water() {
-        super.water();
+        thirstLevel += 5;
     }
-
-    @Override
     public void play() {
-        super.play();
+        boredomLevel += 5;
     }
-
-    @Override
     public void walk() {
+        sanitationLevel -= 5;
+    }
+    @Override
+    public void tick() {
 
+    }
     }
 }
+
+
+

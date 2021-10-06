@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 
 public class VirtualPetApplication {
-
-    VirtualPetShelter myShelter = new VirtualPetShelter();
+    VirtualPetShelter myShelter;
 
 
 
@@ -17,6 +16,7 @@ public class VirtualPetApplication {
     }
 
     public void gameLoop() {
+        myShelter = new VirtualPetShelter();
         Boolean quit = false;
 
         System.out.println("Welcome to the pet shelter! Here you can feed your pets, " +
