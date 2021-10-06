@@ -35,7 +35,9 @@ public class VirtualPetShelter {
 
     public void feedAllPets() {
         for (VirtualPet petsToFeed : petShelter) {
-            petsToFeed.feed();
+            if (petsToFeed instanceof OrganicPet) {
+                ((OrganicPet) petsToFeed).feed();
+            }
 
 
         }
@@ -49,7 +51,9 @@ public class VirtualPetShelter {
 
     public void waterAllPets() {
         for(VirtualPet petsToWater : petShelter) {
-            petsToWater.water();
+            if (petsToWater instanceof OrganicPet) {
+                ((OrganicPet) petsToWater).water();
+            }
 
         }
     }

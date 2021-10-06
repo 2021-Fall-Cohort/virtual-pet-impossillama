@@ -178,9 +178,12 @@ public class VirtualPetApplication {
 
     public void boredomCheck(VirtualPetShelter petDied){
         for(VirtualPet boredPet : myShelter.getPets()) {
-            if (boredPet.isBored()){
+            if (boredPet instanceof DogRobo || boredPet instanceof OrganicDog){
                 System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
-                        "want to play with th em");
+                        "want to walk them");
+            } else if(boredPet instanceof RoboticPet || boredPet instanceof  OrganicPet) {
+                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
+                        "want to play with them");
             }
 
         }

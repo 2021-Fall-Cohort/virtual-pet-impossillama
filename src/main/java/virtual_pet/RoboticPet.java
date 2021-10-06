@@ -32,7 +32,7 @@ public class RoboticPet extends VirtualPet {
     }
 
     public void chargeBattery() {
-        this.batteryCharge +=10;
+        this.batteryCharge += 10;
     }
 
     public void refillOil() {
@@ -41,7 +41,7 @@ public class RoboticPet extends VirtualPet {
 
     @Override
     public void play() {
-        this.batteryCharge -= 10;
+        this.batteryCharge += 10;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class RoboticPet extends VirtualPet {
 
     public boolean isDead(){
 
-        if (batteryCharge >= 100 || oilLevel >= 100){
+        if (batteryCharge <= 0 || oilLevel <= 0){
             return true;
         }
         return false;

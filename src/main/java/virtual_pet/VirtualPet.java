@@ -52,32 +52,6 @@ public abstract class VirtualPet {
         this.boredomLevel = boredomLevel;
     }
 
-    public void feed() {
-
-        hungerLevel -= 15 ;
-    }
-
-    public void water() {
-
-        thirstLevel -= 15;
-
-    }
-
-
-    public boolean isDead(){
-
-        if (hungerLevel >= 100 || thirstLevel >= 100){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isBored(){
-        if (boredomLevel >= 100) {
-            return true;
-        }
-        return false;
-    }
 
     public abstract void tick();
 

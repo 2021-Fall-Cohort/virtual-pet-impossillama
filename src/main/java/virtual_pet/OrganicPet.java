@@ -47,20 +47,29 @@ public class OrganicPet extends VirtualPet {
 
     }
 
-
-    @Override
     public void feed() {
-        this.hungerLevel += 5;
+
+        hungerLevel -= 15 ;
     }
-    @Override
+
     public void water() {
 
-        this.thirstLevel += 5;
+        thirstLevel -= 15;
+
     }
 
-    @Override
-    public boolean isDead() {
-        return super.isDead();
+    public boolean isDead(){
 
+        if (hungerLevel >= 100 || thirstLevel >= 100){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBored(){
+        if (boredomLevel >= 100) {
+            return true;
+        }
+        return false;
     }
 }
