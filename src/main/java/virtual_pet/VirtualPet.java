@@ -1,17 +1,13 @@
 package virtual_pet;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 
-
-public class VirtualPet extends VirtualPetApplication {
+public class VirtualPet {
     protected String name;
     protected String description;
-    private int hungerLevel;
-    private int thirstLevel;
-    private int boredomLevel;
+    protected int hungerLevel;
+    protected int thirstLevel;
+    protected int boredomLevel;
 
     public VirtualPet(String name, String description){
         this.name = name;
@@ -37,7 +33,7 @@ public class VirtualPet extends VirtualPetApplication {
         this.description = description;
     }
 
-    public int getHungerLevel() {
+    protected int getHungerLevel() {
 
         return hungerLevel;
     }

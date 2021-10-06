@@ -15,9 +15,8 @@ public class VirtualPetShelter {
         petShelter.add(new DogRobo("Frisket", "The best dog in Mainframe"));
         petShelter.add(new CatRobo("Widget","ROADHOUSE"));
 
+
     }
-
-
     public void addNewPet(VirtualPet pet) {
 
         petShelter.add(pet);
