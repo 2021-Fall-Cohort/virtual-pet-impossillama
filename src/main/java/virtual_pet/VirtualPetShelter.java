@@ -108,7 +108,7 @@ public class VirtualPetShelter {
     }
     public boolean deadPetSearch(){
         for(VirtualPet deadPet : petShelter){
-            if(deadPet.isDead()) {
+            if(deadPet instanceof OrganicPet) {
                 return true;
             }
         }

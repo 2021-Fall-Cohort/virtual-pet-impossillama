@@ -51,7 +51,6 @@ public class RoboticPet extends VirtualPet {
 
     }
 
-    @Override
 
     public boolean isDead(){
 

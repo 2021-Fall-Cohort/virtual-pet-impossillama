@@ -97,7 +97,7 @@ public class VirtualPetApplication {
              }
 
 
-        }while(!quit || !myShelter.deadPetSearch());
+        }while(!quit);
         System.out.println("Game Over");
     }
     public VirtualPet createPet(){
