@@ -26,13 +26,8 @@ public class VirtualPetApplication {
 
 
         do {
-            if(myShelter.deadPetSearch()){
-                System.out.println("A pet has died");
-                System.out.println("This shelter has been closed by the ASPCA");
 
 
-                break;
-            }
             System.out.println("If you want to feed the pets please press 1 \n" +
                     "If you want water pets press 2 \n" +
                     "If you want to play with a pet press 3 \n" +
@@ -48,6 +43,15 @@ public class VirtualPetApplication {
             menuChoice = input.nextInt();
 
             myShelter.tickAllPets();
+
+            healthCheck(myShelter);
+            boredomCheck(myShelter);
+            if (myShelter.deadPetSearch()) {
+                System.out.println("One of your pets has died");
+                break;
+            }
+
+
 
 
             switch(menuChoice){
@@ -80,7 +84,7 @@ public class VirtualPetApplication {
                     listPets(myShelter);
                     break;
                 case 7:
-                    System.out.println("See you nexd time!");
+                    System.out.println("See you next time!");
                     quit = true;
                 default:
                     System.out.println("Oops you broke it");
@@ -89,7 +93,7 @@ public class VirtualPetApplication {
              }
 
 
-        }while(!quit);
+        }while(!quit || !myShelter.deadPetSearch());
         System.out.println("Game Over");
     }
     public VirtualPet createPet(){
@@ -135,10 +139,18 @@ public class VirtualPetApplication {
 
         }
     }
+
     public void healthCheck(VirtualPetShelter petDied){
-        System.out.println("One of your pets has died!");
         petDied.deadPetSearch();
     }
 
+    public void boredomCheck(VirtualPetShelter petDied){
+        for(VirtualPet boredPet : myShelter.getPets()) {
+            if (boredPet.isBored()){
+                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
+                        "want to play with th em");
+            }
 
+        }
+    }
 }

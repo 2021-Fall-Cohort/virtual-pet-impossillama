@@ -1,7 +1,8 @@
 package virtual_pet;
 
 
-public class VirtualPet{
+
+public class VirtualPet {
     protected String name;
     protected String description;
     protected int hungerLevel;
@@ -11,6 +12,7 @@ public class VirtualPet{
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
+        this.hungerLevel = (int)Math.floor(Math.random() * 100);
         this.hungerLevel = (int)Math.floor(Math.random() * 100);
         this.thirstLevel = (int)Math.floor(Math.random() * 100);
         this.boredomLevel = (int)Math.floor(Math.random() * 100);
@@ -23,6 +25,7 @@ public class VirtualPet{
     }
 
     public String getDescription(){
+
         return description;
     }
 
@@ -63,36 +66,41 @@ public class VirtualPet{
 
     public void feed() {
 
-        this.hungerLevel = Math.min(0,hungerLevel-15);
-        this.hungerLevel = Math.max(100, hungerLevel -15);
+        hungerLevel -= 15 ;
     }
 
     public void water() {
 
-        this.thirstLevel = Math.min(0, thirstLevel-15);
+        thirstLevel -= 15;
 
     }
 
     public  void play() {
-        this.boredomLevel = Math.min(0, boredomLevel-10);
-        this.hungerLevel = Math.max(100, hungerLevel +5);
-        this.thirstLevel = Math.max(100, thirstLevel +5);
+        boredomLevel -= 15;
+        hungerLevel += 5;
+        thirstLevel += 5;
     }
 
     public void tick() {
-        this.hungerLevel = Math.min(100,hungerLevel+5);
-        this.thirstLevel = Math.min(100, thirstLevel+5);
-        this.boredomLevel = Math.min(100, boredomLevel+5);
+        hungerLevel += 5;
+        thirstLevel += 5;
+        boredomLevel += 5;
 
     }
+
     public boolean isDead(){
 
-        if (hungerLevel == 100 || thirstLevel == 100){
-            return true;
-        }
-        else if(boredomLevel == 100){
+        if (hungerLevel >= 100 || thirstLevel >= 100){
             return true;
         }
         return false;
     }
+
+    public boolean isBored(){
+        if (boredomLevel >= 100) {
+            return true;
+        }
+        return false;
+    }
+
 }
