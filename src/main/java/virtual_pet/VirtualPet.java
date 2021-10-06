@@ -2,7 +2,7 @@ package virtual_pet;
 
 
 
-public class VirtualPet {
+public abstract class VirtualPet {
     protected String name;
     protected String description;
     protected int hungerLevel;
@@ -12,10 +12,6 @@ public class VirtualPet {
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
-        this.hungerLevel = (int)Math.floor(Math.random() * 100);
-        this.hungerLevel = (int)Math.floor(Math.random() * 100);
-        this.thirstLevel = (int)Math.floor(Math.random() * 100);
-        this.boredomLevel = (int)Math.floor(Math.random() * 100);
 
     }
 
@@ -33,20 +29,7 @@ public class VirtualPet {
         this.description = description;
     }
 
-    protected int getHungerLevel() {
 
-        return hungerLevel;
-    }
-
-    public int getThirstLevel() {
-
-        return thirstLevel;
-    }
-
-    public int getBoredomLevel() {
-
-        return boredomLevel;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -75,18 +58,6 @@ public class VirtualPet {
 
     }
 
-    public  void play() {
-        boredomLevel -= 15;
-        hungerLevel += 5;
-        thirstLevel += 5;
-    }
-
-    public void tick() {
-        hungerLevel += 5;
-        thirstLevel += 5;
-        boredomLevel += 5;
-
-    }
 
     public boolean isDead(){
 
@@ -102,5 +73,10 @@ public class VirtualPet {
         }
         return false;
     }
+
+    public abstract void tick();
+
+    public abstract void play();
+
 
 }

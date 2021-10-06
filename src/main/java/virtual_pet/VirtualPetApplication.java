@@ -101,7 +101,7 @@ public class VirtualPetApplication {
         String newPetName;
         String newPetDescription;
 
-        VirtualPet newPet = new VirtualPet("","");
+        VirtualPet newPet = new OrganicPet("", "");
 
         System.out.println("You want to add a new pet? Okay what is their name?");
         newPetName = input.nextLine();
@@ -115,7 +115,7 @@ public class VirtualPetApplication {
         newPet.setThirstLevel((int)Math.floor(Math.random() * 100));
         newPet.setBoredomLevel((int)Math.floor(Math.random() * 100));
 
-        newPet = new VirtualPet(newPetName, newPetDescription);
+        newPet = new OrganicPet(newPetName, newPetDescription);
 
 
 
@@ -132,10 +132,10 @@ public class VirtualPetApplication {
         System.out.println("List of pets: ");
         for (VirtualPet pet : petShelter.getPets()){
             System.out.println("Name:" + pet.getName());
-            System.out.println("Description: " + pet.getDescription());
-            System.out.println("Hunger Level: " + pet.getHungerLevel());
-            System.out.println("Thirst Level: " + pet.getThirstLevel());
-            System.out.println("Boredom Level: " + pet.getBoredomLevel() + "\n");
+//            System.out.println("Description: " + pet.getDescription());
+//            System.out.println("Hunger Level: " + pet.getHungerLevel());
+//            System.out.println("Thirst Level: " + pet.getThirstLevel());
+//            System.out.println("Boredom Level: " + pet.getBoredomLevel() + "\n");
 
         }
     }

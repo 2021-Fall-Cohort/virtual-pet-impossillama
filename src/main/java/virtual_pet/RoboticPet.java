@@ -40,6 +40,11 @@ public abstract class RoboticPet extends VirtualPet {
     }
 
     @Override
+    public void play() {
+        this.batteryCharge -= 10;
+    }
+
+    @Override
     public void tick() {
        oilLevel -=5;
        batteryCharge -= 5;
@@ -55,7 +60,5 @@ public abstract class RoboticPet extends VirtualPet {
         }
         return false;
     }
-
-
 
 }
