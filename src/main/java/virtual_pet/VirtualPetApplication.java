@@ -36,7 +36,8 @@ public class VirtualPetApplication {
                     "Press 6 to admit a pet\n" +
                     "Press 7  to list all pets\n" +
                     "Press 8 to play with a pet" +
-                    "Press 9 to quit the program");
+                    "Press 9 to clean a pet's cage\n" +
+                    "Enter 10 to quit the program");
 
             Scanner input = new Scanner(System.in);
             int menuChoice;
@@ -56,11 +57,11 @@ public class VirtualPetApplication {
 
             switch(menuChoice){
                 case 1:
-                    myShelter.feedAllPets();
+                    myShelter.feedAllOrganicPets();
                     System.out.println("All organic pets are fed!");
                     break;
                 case 2:
-                    myShelter.waterAllPets();
+                    myShelter.waterAllOrganicPets();
                     System.out.println("All organic pets are watered!");
                     break;
                 case 3:
@@ -90,6 +91,10 @@ public class VirtualPetApplication {
                     System.out.println("Which pet would you like to play with?");
                     playWithPets(myShelter);
                     break;
+                case 9:
+                    System.out.println("Which pet's cage would you like to clean?");
+                    cageCleaner(myShelter);
+
                 default:
                     System.out.println("Oops you broke it");
                     break;
@@ -158,7 +163,7 @@ public class VirtualPetApplication {
                 System.out.println("Name:" + pet.getName());
                 System.out.println("Description: " + pet.getDescription());
                 System.out.println("Hunger Level: " + ((OrganicPet) pet).getHungerLevel());
-                System.out.println("Thirst Level: " +  ((OrganicPet) pet).getHungerLevel());
+                System.out.println("Thirst Level: " +  ((OrganicPet) pet).getThirstLevel());
                 System.out.println("Boredom Level: " +  (pet.getBoredomLevel()));
                 System.out.println("Cage Soil Level: " + ((OrganicPet) pet).getSanitationLevel() + "\n");
             } else if (pet instanceof RoboticPet) {
@@ -173,7 +178,13 @@ public class VirtualPetApplication {
     }
 
     public void healthCheck(VirtualPetShelter petDied){
-        petDied.deadPetSearch();
+        for (VirtualPet deadPet : myShelter.getPets()){
+            if(deadPet instanceof OrganicPet) {
+               myShelter.deadPetSearch();
+            } else if(deadPet instanceof RoboticPet) {
+                myShelter.deadPetSearch();
+            }
+      }
     }
 
     public void boredomCheck(VirtualPetShelter petDied){
@@ -207,5 +218,19 @@ public class VirtualPetApplication {
 
             }
         }
+    }
+
+    public void cageCleaner(VirtualPetShelter dirtyCages) {
+        listPets(myShelter);
+
+        Scanner input = new Scanner(System.in);
+        String dirtyPet;
+        dirtyPet= input.nextLine();
+        for (VirtualPet pet:  myShelter.getPets()) {
+
+
+        }
+
+
     }
 }

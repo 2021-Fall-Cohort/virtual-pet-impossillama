@@ -10,8 +10,8 @@ public class OrganicPet extends VirtualPet {
         super(name, description);
         this.hungerLevel = (int) Math.floor(Math.random() * 100);
         this.thirstLevel = (int) Math.floor(Math.random() * 100);
-        this.hungerLevel = (int)Math.floor(Math.random() * 100);
         this.sanitationLevel = (int) Math.floor(Math.random() * 100);
+
     }
 
     protected int getHungerLevel() {
@@ -30,6 +30,7 @@ public class OrganicPet extends VirtualPet {
     }
 
     public int getSanitationLevel() {
+
         return sanitationLevel;
     }
 
@@ -38,13 +39,14 @@ public class OrganicPet extends VirtualPet {
         boredomLevel -= 15;
         hungerLevel += 5;
         thirstLevel += 5;
+
     }
 
     public void tick() {
         hungerLevel += 5;
         thirstLevel += 5;
         boredomLevel += 5;
-
+        sanitationLevel += 5;
     }
 
     public void feed() {
@@ -58,6 +60,14 @@ public class OrganicPet extends VirtualPet {
 
     }
 
+    public boolean cageDirty() {
+        if(sanitationLevel <= 100 ){
+            return true;
+        }
+        return false;
+
+    }
+    @Override
     public boolean isDead(){
 
         if (hungerLevel >= 100 || thirstLevel >= 100){
@@ -66,10 +76,4 @@ public class OrganicPet extends VirtualPet {
         return false;
     }
 
-    public boolean isBored(){
-        if (boredomLevel >= 100) {
-            return true;
-        }
-        return false;
-    }
 }

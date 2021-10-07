@@ -11,9 +11,9 @@ public class VirtualPetShelter {
     public VirtualPetShelter() {
         petShelter = new ArrayList<VirtualPet>();
         petShelter.add(new OrganicCat("Beebo","Is covered in fleas"));
-        petShelter.add(new OrganicDog("Revvo","Needs a rabies shot"));
-        petShelter.add(new DogRobo("Frisket", "The best dog in Mainframe"));
-        petShelter.add(new CatRobo("Widget","ROADHOUSE"));
+//        petShelter.add(new OrganicDog("Revvo","Needs a rabies shot"));
+//        petShelter.add(new DogRobo("Frisket", "The best dog in Mainframe"));
+//        petShelter.add(new CatRobo("Widget","ROADHOUSE"));
 
 
     }
@@ -33,7 +33,7 @@ public class VirtualPetShelter {
         return petShelter;
     }
 
-    public void feedAllPets() {
+    public void feedAllOrganicPets() {
         for (VirtualPet petsToFeed : petShelter) {
             if (petsToFeed instanceof OrganicPet) {
                 ((OrganicPet) petsToFeed).feed();
@@ -49,7 +49,7 @@ public class VirtualPetShelter {
         }
     }
 
-    public void waterAllPets() {
+    public void waterAllOrganicPets() {
         for(VirtualPet petsToWater : petShelter) {
             if (petsToWater instanceof OrganicPet) {
                 ((OrganicPet) petsToWater).water();
@@ -74,19 +74,6 @@ public class VirtualPetShelter {
         }
     }
 
-    public void playWithPet() {
-        Scanner input = new Scanner(System.in);
-        String pet;
-        pet = input.nextLine();
-        for (VirtualPet  petToPlayWith : petShelter){
-            if (pet == petToPlayWith.getName()) {
-                petToPlayWith.play();
-
-            }
-
-        }
-
-    }
 
     public void listPetDescriptions() {
         for(VirtualPet petsForAdoption : petShelter) {
@@ -106,9 +93,10 @@ public class VirtualPetShelter {
         }
 
     }
+
     public boolean deadPetSearch(){
         for(VirtualPet deadPet : petShelter){
-            if(deadPet instanceof OrganicPet) {
+            if(deadPet.isDead()) {
                 return true;
             }
         }
