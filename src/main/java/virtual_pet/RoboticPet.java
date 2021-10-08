@@ -31,16 +31,16 @@ public class RoboticPet extends VirtualPet {
         return batteryCharge;
     }
 
-    public void chargeBattery() {
-        this.batteryCharge += 10;
-    }
+
 
     public void refillOil() {
+
         this.oilLevel += 10;
     }
 
     @Override
     public void play() {
+
         this.batteryCharge += 10;
     }
 
