@@ -47,11 +47,12 @@ public class VirtualPetApplication {
             myShelter.tickAllPets();
 
             healthCheck(myShelter);
-            boredomCheck(myShelter);
             if (myShelter.deadPetSearch()) {
                 System.out.println("One of your pets has died");
                 break;
             }
+
+            sanitationCheck(myShelter);
 
 
 
@@ -177,6 +178,16 @@ public class VirtualPetApplication {
         }
     }
 
+    public void sanitationCheck(VirtualPetShelter dirtCages) {
+        for (VirtualPet dirtyPet: myShelter.getPets()) {
+            if (dirtyPet instanceof OrganicPet) {
+                if (((OrganicPet) dirtyPet).cageDirty()){
+                    System.out.println("You should really clean out " +dirtyPet.getName() +"'s cage before they get sick");
+                }
+            }
+        }
+    }
+
     public void healthCheck(VirtualPetShelter petDied){
         for (VirtualPet deadPet : myShelter.getPets()){
             if(deadPet instanceof OrganicPet) {
@@ -187,19 +198,7 @@ public class VirtualPetApplication {
       }
     }
 
-    public void boredomCheck(VirtualPetShelter petDied){
-        for(VirtualPet boredPet : myShelter.getPets()) {
-            if (boredPet instanceof DogRobo || boredPet instanceof OrganicDog){
-                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
-                        "want to walk them");
-            } else if(boredPet instanceof RoboticPet || boredPet instanceof  OrganicPet) {
-                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
-                        "want to play with them");
-            }
 
-        }
-
-    }
 
     public void playWithPets(VirtualPetShelter petsToPlayWith) {
         Scanner input = new Scanner(System.in);
@@ -225,12 +224,14 @@ public class VirtualPetApplication {
 
         Scanner input = new Scanner(System.in);
         String dirtyPet;
-        dirtyPet= input.nextLine();
+        dirtyPet = input.nextLine();
         for (VirtualPet pet:  myShelter.getPets()) {
-
-
+            if (dirtyPet == pet.getName()) {
+                if (pet instanceof OrganicPet) {
+                    ((OrganicPet) pet).cleanCage();
+                }
+            }
         }
-
 
     }
 }

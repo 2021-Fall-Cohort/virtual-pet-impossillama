@@ -11,7 +11,7 @@ public abstract class VirtualPet {
     public VirtualPet(String name, String description){
         this.name = name;
         this.description = description;
-        this.boredomLevel = (int) Math.floor(Math.random() * 100);
+        this.boredomLevel = (int) Math.floor(Math.random() * 50);
 
 
     }
