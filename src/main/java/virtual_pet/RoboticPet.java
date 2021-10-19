@@ -7,14 +7,10 @@ public class RoboticPet extends VirtualPet {
 
     public RoboticPet(String name, String description) {
         super(name, description);
-        this.oilLevel = (int)Math.floor(Math.random() * 100);
-        this.batteryCharge = (int)Math.floor(Math.random() * 100);
+        this.oilLevel = (int)Math.floor(Math.random() * 50);
+        this.batteryCharge = (int)Math.floor(Math.random() * 50);
     }
 
-    public void oil() {
-
-        this.oilLevel += 5;
-    }
 
     public void charge() {
 
@@ -38,6 +34,7 @@ public class RoboticPet extends VirtualPet {
         this.oilLevel += 10;
     }
 
+
     @Override
     public void play() {
 
@@ -58,6 +55,11 @@ public class RoboticPet extends VirtualPet {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String petRow() {
+        return name + " | Oil Level: " + oilLevel + " | Battery Level: " + batteryCharge +  " | Boredom: " + getBoredomLevel() + "| Description: " + description;
     }
 
 }

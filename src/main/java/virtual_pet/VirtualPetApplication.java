@@ -48,11 +48,12 @@ public class VirtualPetApplication {
             myShelter.tickAllPets();
 
             healthCheck(myShelter);
-            boredomCheck(myShelter);
             if (myShelter.deadPetSearch()) {
                 System.out.println("One of your pets has died");
                 break;
             }
+
+            sanitationCheck(myShelter);
 
 
 
@@ -158,22 +159,23 @@ public class VirtualPetApplication {
 
 
     public void listPets(VirtualPetShelter petShelter){
-        System.out.println("List of pets: ");
+        System.out.println("List of pets: \n");
         for (VirtualPet pet : petShelter.getPets()){
             if ( pet instanceof  OrganicPet) {
-                System.out.println("Name:" + pet.getName());
-                System.out.println("Description: " + pet.getDescription());
-                System.out.println("Hunger Level: " + ((OrganicPet) pet).getHungerLevel());
-                System.out.println("Thirst Level: " +  ((OrganicPet) pet).getThirstLevel());
-                System.out.println("Boredom Level: " +  (pet.getBoredomLevel()));
-                System.out.println("Cage Soil Level: " + ((OrganicPet) pet).getSanitationLevel() + "\n");
+                System.out.println(pet.petRow() +"\n");
             } else if (pet instanceof RoboticPet) {
-                System.out.println("Name:" + pet.getName());
-                System.out.println("Description: " + pet.getDescription());
-                System.out.println("Oil Level: " + ((RoboticPet) pet).getOilLevel());
-                System.out.println("Battery Level: " +  ((RoboticPet) pet).getBatteryCharge());
-                System.out.println("Boredom Level: " +  pet.getBoredomLevel()+ "\n");
+                System.out.println(pet.petRow() + "\n");
 
+            }
+        }
+    }
+
+    public void sanitationCheck(VirtualPetShelter dirtyCages) {
+        for (VirtualPet dirtyPet: myShelter.getPets()) {
+            if (dirtyPet instanceof OrganicPet) {
+                if (((OrganicPet) dirtyPet).cageDirty()){
+                    System.out.println("You should really clean out " +dirtyPet.getName() +"'s cage before they get sick");
+                }
             }
         }
     }
@@ -188,19 +190,7 @@ public class VirtualPetApplication {
       }
     }
 
-    public void boredomCheck(VirtualPetShelter petDied){
-        for(VirtualPet boredPet : myShelter.getPets()) {
-            if (boredPet instanceof DogRobo || boredPet instanceof OrganicDog){
-                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
-                        "want to walk them");
-            } else if(boredPet instanceof RoboticPet || boredPet instanceof  OrganicPet) {
-                System.out.println(boredPet.getName() +" is about to lose their mind with boredom, you might" +
-                        "want to play with them");
-            }
 
-        }
-
-    }
 
     public void playWithPets(VirtualPetShelter petsToPlayWith) {
         Scanner input = new Scanner(System.in);
@@ -226,12 +216,14 @@ public class VirtualPetApplication {
 
         Scanner input = new Scanner(System.in);
         String dirtyPet;
-        dirtyPet= input.nextLine();
+        dirtyPet = input.nextLine();
         for (VirtualPet pet:  myShelter.getPets()) {
-
-
+            if (dirtyPet == pet.getName()) {
+                if (pet instanceof OrganicPet) {
+                    ((OrganicPet) pet).cleanCage();
+                }
+            }
         }
-
 
     }
 }

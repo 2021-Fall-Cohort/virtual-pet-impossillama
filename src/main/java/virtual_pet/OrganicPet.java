@@ -8,9 +8,9 @@ public class OrganicPet extends VirtualPet {
 
     public OrganicPet(String name, String description) {
         super(name, description);
-        this.hungerLevel = (int) Math.floor(Math.random() * 100);
-        this.thirstLevel = (int) Math.floor(Math.random() * 100);
-        this.sanitationLevel = (int) Math.floor(Math.random() * 100);
+        this.hungerLevel = (int) Math.floor(Math.random() * 50);
+        this.thirstLevel = (int) Math.floor(Math.random() * 50);
+        this.sanitationLevel = (int) Math.floor(Math.random() * 50);
 
     }
 
@@ -67,6 +67,10 @@ public class OrganicPet extends VirtualPet {
         return false;
 
     }
+
+    public void cleanCage() {
+        sanitationLevel -= 10;
+    }
     @Override
     public boolean isDead(){
 
@@ -74,6 +78,11 @@ public class OrganicPet extends VirtualPet {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String petRow() {
+        return name + " | Hunger Level: " + hungerLevel + " | Thirst Level: " + thirstLevel + " | Sanitation Level: " + sanitationLevel + " | Boredom: " + boredomLevel + "| Description: " + description;
     }
 
 }

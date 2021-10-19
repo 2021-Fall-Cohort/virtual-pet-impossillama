@@ -3,6 +3,7 @@ package virtual_pet;
 public class OrganicDog extends OrganicPet implements Walkable {
 
     public OrganicDog (String name, String description) {
+
         super(name, description);
     }
 
