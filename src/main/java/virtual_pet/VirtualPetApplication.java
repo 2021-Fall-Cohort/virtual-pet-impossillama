@@ -158,27 +158,18 @@ public class VirtualPetApplication {
 
 
     public void listPets(VirtualPetShelter petShelter){
-        System.out.println("List of pets: ");
+        System.out.println("List of pets: \n");
         for (VirtualPet pet : petShelter.getPets()){
             if ( pet instanceof  OrganicPet) {
-                System.out.println("Name:" + pet.getName());
-                System.out.println("Description: " + pet.getDescription());
-                System.out.println("Hunger Level: " + ((OrganicPet) pet).getHungerLevel());
-                System.out.println("Thirst Level: " +  ((OrganicPet) pet).getThirstLevel());
-                System.out.println("Boredom Level: " +  (pet.getBoredomLevel()));
-                System.out.println("Cage Soil Level: " + ((OrganicPet) pet).getSanitationLevel() + "\n");
+                System.out.println(pet.petRow() +"\n");
             } else if (pet instanceof RoboticPet) {
-                System.out.println("Name:" + pet.getName());
-                System.out.println("Description: " + pet.getDescription());
-                System.out.println("Oil Level: " + ((RoboticPet) pet).getOilLevel());
-                System.out.println("Battery Level: " +  ((RoboticPet) pet).getBatteryCharge());
-                System.out.println("Boredom Level: " +  pet.getBoredomLevel()+ "\n");
+                System.out.println(pet.petRow() + "\n");
 
             }
         }
     }
 
-    public void sanitationCheck(VirtualPetShelter dirtCages) {
+    public void sanitationCheck(VirtualPetShelter dirtyCages) {
         for (VirtualPet dirtyPet: myShelter.getPets()) {
             if (dirtyPet instanceof OrganicPet) {
                 if (((OrganicPet) dirtyPet).cageDirty()){

@@ -80,4 +80,9 @@ public class OrganicPet extends VirtualPet {
         return false;
     }
 
+    @Override
+    public String petRow() {
+        return name + " | Hunger Level: " + hungerLevel + " | Thirst Level: " + thirstLevel + " | Sanitation Level: " + sanitationLevel + " | Boredom: " + boredomLevel + "| Description: " + description;
+    }
+
 }

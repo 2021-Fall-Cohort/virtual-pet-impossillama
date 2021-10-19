@@ -57,4 +57,9 @@ public class RoboticPet extends VirtualPet {
         return false;
     }
 
+    @Override
+    public String petRow() {
+        return name + " | Oil Level: " + oilLevel + " | Battery Level: " + batteryCharge +  " | Boredom: " + getBoredomLevel() + "| Description: " + description;
+    }
+
 }

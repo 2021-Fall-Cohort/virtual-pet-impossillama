@@ -53,4 +53,6 @@ public abstract class VirtualPet {
     public abstract void play();
 
     public abstract boolean isDead();
+
+    public abstract String petRow();
 }
