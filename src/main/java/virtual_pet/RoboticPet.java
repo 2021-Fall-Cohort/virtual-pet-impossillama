@@ -7,8 +7,10 @@ public class RoboticPet extends VirtualPet {
 
     public RoboticPet(String name, String description) {
         super(name, description);
-        this.oilLevel = (int)Math.floor(Math.random() * 50);
-        this.batteryCharge = (int)Math.floor(Math.random() * 50);
+//        this.oilLevel = (int)Math.floor(Math.random() * 50);
+//        this.batteryCharge = (int)Math.floor(Math.random() * 50);
+        this.oilLevel = 50;
+        this.batteryCharge = 50;
     }
 
 

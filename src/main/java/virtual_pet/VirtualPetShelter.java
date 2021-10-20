@@ -39,7 +39,6 @@ public class VirtualPetShelter {
                 ((OrganicPet) petsToFeed).feed();
             }
 
-
         }
     }
 
@@ -78,18 +77,14 @@ public class VirtualPetShelter {
     public void listPetDescriptions() {
         for(VirtualPet petsForAdoption : petShelter) {
             System.out.println(petsForAdoption.getName() + " " + petsForAdoption.getDescription());
-            tickAllPets();
+
         }
     }
 
-    public void adoptPet() {
-        Scanner input =  new Scanner(System.in);
-        String petToAdoptOut;
-        petToAdoptOut = input.nextLine();
-        for(VirtualPet adoptablePet : petShelter) {
-            adoptablePet.equals(petToAdoptOut);
-            removePet(adoptablePet);
-            tickAllPets();
+    public void adoptPet(String petName) {
+        VirtualPet petToAdopt = getPetByName(petName);
+        if(petShelter.contains(petToAdopt)){
+            petShelter.remove(petToAdopt);
         }
 
     }
@@ -102,5 +97,35 @@ public class VirtualPetShelter {
         }
             return false;
     }
+
+    public void cleanCage(VirtualPet pet) {
+        if(pet instanceof OrganicPet) {
+            ((OrganicPet) pet).sanitationLevel -= 10;
+        }
+
+    }
+
+    public void cleanAllCages() {
+        for(VirtualPet pet : petShelter) {
+            if(pet instanceof OrganicPet) {
+                cleanCage(pet);
+            }
+        }
+    }
+
+    public VirtualPet getPetByName(String petName) {
+        int petIndex = -1;
+        for(VirtualPet pet : petShelter ) {
+            if (pet.getName().equalsIgnoreCase(petName)) {
+                petIndex = petShelter.indexOf(pet);
+            }
+        }
+        if(petIndex > -1) {
+            return petShelter.get(petIndex);
+        } else {
+            return null;
+        }
+    }
+
 
 }
