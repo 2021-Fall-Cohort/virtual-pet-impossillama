@@ -8,13 +8,12 @@ public class VirtualPetApplication {
     VirtualPetShelter myShelter;
 
 
-
-
     public static void main(String[] args) {
         VirtualPetApplication game = new VirtualPetApplication();
 
         game.gameLoop();
     }
+
 
     public void gameLoop() {
         myShelter = new VirtualPetShelter();
@@ -24,6 +23,8 @@ public class VirtualPetApplication {
                 "adopt them out or add new pets to the list");
         System.out.println("Here is the status of all of your pets: \n");
         listPets(myShelter);
+
+        Scanner input = new Scanner(System.in);
 
 
         do {
@@ -36,14 +37,16 @@ public class VirtualPetApplication {
                     "Press 5 to adopt a pet out\n" +
                     "Press 6 to admit a pet\n" +
                     "Press 7  to list all pets\n" +
-                    "Press 8 to play with a pet" +
+                    "Press 8 to play with a pet\n" +
                     "Press 9 to clean a pet's cage\n" +
-                    "Enter 10 to quit the program");
+                    "Press 10 to clean all organic pet cages\n" +
+                    "Enter 11 to quit the program");
 
-            Scanner input = new Scanner(System.in);
+
             int menuChoice;
 
             menuChoice = input.nextInt();
+            input.nextLine();
 
             myShelter.tickAllPets();
 
@@ -56,8 +59,7 @@ public class VirtualPetApplication {
             sanitationCheck(myShelter);
 
 
-
-            switch(menuChoice){
+            switch (menuChoice) {
                 case 1:
                     myShelter.feedAllOrganicPets();
                     System.out.println("All organic pets are fed!");
@@ -74,14 +76,16 @@ public class VirtualPetApplication {
                     System.out.println("All robot pets have been recharged");
                     myShelter.chargeRoboticPets();
                     break;
-                    case 5:
+                case 5:
                     System.out.println("Which pet would you like to take home with you?");
                     myShelter.listPetDescriptions();
-                    myShelter.adoptPet();
+                    String petToAdoptOut;
+                    petToAdoptOut = input.nextLine();
+                    myShelter.adoptPet(petToAdoptOut);
                     System.out.println("What a great choice!");
                     listPets(myShelter);
                     break;
-                    case 6:
+                case 6:
                     myShelter.addNewPet(createPet());
                     System.out.println("New Pet Created!");
                     break;
@@ -95,24 +99,35 @@ public class VirtualPetApplication {
                     break;
                 case 9:
                     System.out.println("Which pet's cage would you like to clean?");
-                    cageCleaner(myShelter);
+                    myShelter.cleanCage(myShelter.getPetByName(input.nextLine()));
+
+                case 10:
+                    System.out.println("All pet cages have been cleaned");
+                    myShelter.cleanAllCages();
+                case 11:
+                    System.out.println("Thanks for playing!");
+                    quit = true;
+                    break;
 
                 default:
                     System.out.println("Oops you broke it");
                     break;
 
-             }
+            }
 
 
-        }while(!quit);
+        } while (!quit);
+        input.close();
         System.out.println("Game Over");
     }
-    public VirtualPet createPet(){
+
+
+
+    public VirtualPet createPet() {
         Scanner input = new Scanner(System.in);
         String newPetName;
         String newPetDescription;
         String petDesignation;
-
 
 
         System.out.println("You want to add a new pet? Would you like to add an organic or robotic pet?");
@@ -134,7 +149,7 @@ public class VirtualPetApplication {
             return newPet;
 
 
-        } else if(input.equals("robotic")){
+        } else if (input.equals("robotic")) {
             RoboticPet newPet = new RoboticPet("", "");
 
             System.out.println("Describe the pet");
@@ -158,11 +173,11 @@ public class VirtualPetApplication {
 
 
 
-    public void listPets(VirtualPetShelter petShelter){
+    public void listPets(VirtualPetShelter petShelter) {
         System.out.println("List of pets: \n");
-        for (VirtualPet pet : petShelter.getPets()){
-            if ( pet instanceof  OrganicPet) {
-                System.out.println(pet.petRow() +"\n");
+        for (VirtualPet pet : petShelter.getPets()) {
+            if (pet instanceof OrganicPet) {
+                System.out.println(pet.petRow() + "\n");
             } else if (pet instanceof RoboticPet) {
                 System.out.println(pet.petRow() + "\n");
 
@@ -171,25 +186,24 @@ public class VirtualPetApplication {
     }
 
     public void sanitationCheck(VirtualPetShelter dirtyCages) {
-        for (VirtualPet dirtyPet: myShelter.getPets()) {
+        for (VirtualPet dirtyPet : myShelter.getPets()) {
             if (dirtyPet instanceof OrganicPet) {
-                if (((OrganicPet) dirtyPet).cageDirty()){
-                    System.out.println("You should really clean out " +dirtyPet.getName() +"'s cage before they get sick");
+                if (((OrganicPet) dirtyPet).cageDirty()) {
+                    System.out.println("You should really clean out " + dirtyPet.getName() + "'s cage before they get sick");
                 }
             }
         }
     }
 
-    public void healthCheck(VirtualPetShelter petDied){
-        for (VirtualPet deadPet : myShelter.getPets()){
-            if(deadPet instanceof OrganicPet) {
-               myShelter.deadPetSearch();
-            } else if(deadPet instanceof RoboticPet) {
+    public void healthCheck(VirtualPetShelter petDied) {
+        for (VirtualPet deadPet : myShelter.getPets()) {
+            if (deadPet instanceof OrganicPet) {
+                myShelter.deadPetSearch();
+            } else if (deadPet instanceof RoboticPet) {
                 myShelter.deadPetSearch();
             }
-      }
+        }
     }
-
 
 
     public void playWithPets(VirtualPetShelter petsToPlayWith) {
@@ -198,10 +212,10 @@ public class VirtualPetApplication {
         petName = input.nextLine();
 
         for (VirtualPet availablePets : myShelter.getPets()) {
-            if(availablePets instanceof OrganicPet){
-                if(petName.equals(availablePets.getName())){
+            if (availablePets instanceof OrganicPet) {
+                if (petName.equals(availablePets.getName())) {
                     availablePets.play();
-                } else if(availablePets instanceof RoboticPet) {
+                } else if (availablePets instanceof RoboticPet) {
                     if (petName.equals(availablePets.getName())) {
                         availablePets.play();
                     }
@@ -211,19 +225,4 @@ public class VirtualPetApplication {
         }
     }
 
-    public void cageCleaner(VirtualPetShelter dirtyCages) {
-        listPets(myShelter);
-
-        Scanner input = new Scanner(System.in);
-        String dirtyPet;
-        dirtyPet = input.nextLine();
-        for (VirtualPet pet:  myShelter.getPets()) {
-            if (dirtyPet == pet.getName()) {
-                if (pet instanceof OrganicPet) {
-                    ((OrganicPet) pet).cleanCage();
-                }
-            }
-        }
-
-    }
 }
