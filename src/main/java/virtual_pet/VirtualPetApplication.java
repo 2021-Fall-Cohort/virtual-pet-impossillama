@@ -136,7 +136,7 @@ public class VirtualPetApplication {
         System.out.println("You want to add a new pet? Would you like to add an organic or robotic pet?");
         petDesignation = input.nextLine();
 
-        if (petDesignation.equals("organic")) {
+        if (petDesignation.equalsIgnoreCase("organic")) {
             OrganicPet newPet = new OrganicPet("", "");
 
             System.out.println("Describe the pet");
@@ -152,7 +152,7 @@ public class VirtualPetApplication {
             return newPet;
 
 
-        } else if (petDesignation.equals("robotic")) {
+        } else if (petDesignation.equalsIgnoreCase("robotic")) {
             RoboticPet newPet = new RoboticPet("", "");
 
             System.out.println("Describe the pet");
