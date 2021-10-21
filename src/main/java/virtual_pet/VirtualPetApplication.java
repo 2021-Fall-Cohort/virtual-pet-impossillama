@@ -96,14 +96,17 @@ public class VirtualPetApplication {
                 case 8:
                     System.out.println("Which pet would you like to play with?");
                     playWithPets(myShelter);
+                    System.out.println("That was FUUUUUUN!");
                     break;
                 case 9:
                     System.out.println("Which pet's cage would you like to clean?");
                     myShelter.cleanCage(myShelter.getPetByName(input.nextLine()));
-
+                    System.out.println("Their cage is now clean!");
+                    break;
                 case 10:
                     System.out.println("All pet cages have been cleaned");
                     myShelter.cleanAllCages();
+                    break;
                 case 11:
                     System.out.println("Thanks for playing!");
                     quit = true;
