@@ -8,9 +8,9 @@ public class OrganicPet extends VirtualPet {
 
     public OrganicPet(String name, String description) {
         super(name, description);
-        this.hungerLevel = (int) Math.floor(Math.random() * 50);
-        this.thirstLevel = (int) Math.floor(Math.random() * 50);
-        this.sanitationLevel = (int) Math.floor(Math.random() * 50);
+        this.hungerLevel = (int) Math.floor(Math.random() * (70 - 30) + 30);
+        this.thirstLevel = (int) Math.floor(Math.random() * (70 - 30) + 30);
+        this.sanitationLevel = (int) Math.floor(Math.random() * (70 - 30) + 30);
 
     }
 

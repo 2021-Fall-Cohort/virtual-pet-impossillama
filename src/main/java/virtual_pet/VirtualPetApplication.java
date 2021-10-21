@@ -148,7 +148,7 @@ public class VirtualPetApplication {
             return newPet;
 
 
-        } else if (input.equals("robotic")) {
+        } else if (petDesignation.equals("robotic")) {
             RoboticPet newPet = new RoboticPet("", "");
 
             System.out.println("Describe the pet");
@@ -188,7 +188,7 @@ public class VirtualPetApplication {
         for (VirtualPet dirtyPet : myShelter.getPets()) {
             if (dirtyPet instanceof OrganicPet) {
                 if (((OrganicPet) dirtyPet).cageDirty()) {
-                    System.out.println("You should really clean out " + dirtyPet.getName() + "'s cage before they get sick");
+                    //System.out.println("You should really clean out " + dirtyPet.getName() + "'s cage before they get sick");
                 }
             }
         }
